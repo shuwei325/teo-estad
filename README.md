@@ -1,9 +1,3 @@
-**Profesores:**
-
--   **Grupo 1:** Shu Wei Chou Chen (<shuwei.chou@ucr.ac.cr>)
--   **Grupo 2:** Christopher Torres Rojas
-    (<christopher.torres@ucr.ac.cr>)
-
 ## DESCRIPCION:
 
 Este curso utiliza la teoría de la probabilidad en espacios discretos y
@@ -13,11 +7,7 @@ estimación de parámetros y contraste de hipótesis, y desarrollar las
 herramientas de estadística contemporánea para sus aplicaciones en
 diversas áreas.
 
-[Carta al
-estudiante](https://shuwei325.github.io/XS3310-I25/XS3310%20carta%20al%20estudiante.pdf)
-
-<a href="https://docs.google.com/spreadsheets/d/1T9SkgJyYtw0ESV2LRFzKDK4R_05WdWr4HFyjJw1nj7I/edit?usp=sharing">Cronograma
-y ejercicios</a>
+**Profesor:** Shu Wei Chou Chen (<shuwei.chou@ucr.ac.cr>)
 
 ## Presentaciones
 
