@@ -1,0 +1,443 @@
+---
+title: "Estimación por intervalo^2^"
+subtitle: " [Curso: Teoría Estadística](https://shuwei325.github.io/teo-estad)"
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Shu Wei Chou Chen
+    url: https://shuwei325.github.io
+    orcid: 0000-0001-5495-2486
+    email: shuwei.chou@ucr.ac.cr
+    affiliations: 
+    - name: Escuela de Estadística, Universidad de Costa Rica
+      url: https://www.estadistica.ucr.ac.cr/
+#date: last-modified
+lang: es  # español
+---
+
+## ¿Qué vamos a discutir hoy?
+
+- Hemos visto hasta ahora sobre 
+  - Estimadores puntuales.
+  - Intervalos de confianza clásicos.
+- Ahora: 
+  - Repaso de algunas distribuciones muestrales útiles
+  - Algunos intervalos de confianza más comunes.
+
+```{r}
+library(ggplot2)
+```
+
+```{css}
+code {
+  font-size: 1.6em;
+  /* or try font-size: xx-large; */
+}
+```
+
+## Repaso de algunas distribuciones muestrales útiles
+
+- Distribución de t-Student
+
+- Distribución F de Fisher
+
+## Distribución de t-Student
+
+**Definición 3.2:** Sean dos variables aleatorias independientes X y Y, tal que $X \sim N(0,1)$ y $Y \sim \chi^2_{m}$. Defina:
+
+$$T=\frac{X}{\sqrt{\frac{Y}{m}}}.$$
+La distirbución de $T$ se llama una distribución t-Student con $m$ grados de libertad, y se denota como $t_m$.
+
+La función de densidad es:
+$$f(x|m)= \frac{\Gamma\left(\frac{m+1}{2}\right)}{(m\pi)^{1/2}\Gamma(\frac{m}{2})}\left(1+\frac{x^2}{m}\right)^{\frac{-(m+1)}{2}},~~~ -\infty<x<\infty.$$
+
+---
+
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 4
+cord.x <- seq(-8,8,0.05) 
+cord.y1 <- dt(cord.x,3) 
+cord.y2 <- dt(cord.x,10) 
+cord.y3 <- dt(cord.x,30) 
+cord.norm <- dnorm(cord.x)
+densidad = c(cord.y1,cord.y2,cord.y3,cord.norm)
+x = rep(cord.x,4)
+dist = c(rep("t3",length(cord.x)),
+         rep("t10",length(cord.x)),
+         rep("t30",length(cord.x)),
+         rep("norm",length(cord.x)))
+datos <- data.frame(x,densidad,dist=factor(dist,levels=c("t3","t10","t30","norm")))
+
+
+ggplot(datos) + geom_line(aes(x = x, y = densidad, color = factor(dist)))+
+    xlab("x") + ylab(expression(f(x))) + xlim(-8,8)+
+   scale_color_manual(name = "Distribución", 
+                      values = c("red", "blue", "green","black"),
+                      labels = c(expression(t[3]),expression(t[10]),expression(t[30]),"N"))+
+theme_bw() + theme(panel.grid.major = element_blank(),
+                   panel.grid.minor = element_blank(), 
+                   axis.ticks = element_blank(),
+                   legend.position="top")
+
+```
+
+
+
+
+## Distribución F de Fisher
+
+**Definición 3.3:** Sean dos variables aleatorias independientes X y Y, tal que $X \sim \chi^2_{m}$ y $Y \sim \chi^2_{n}$, con $m$ y $n$ enteros positivos. Defina:
+
+$$F=\frac{\frac{X}{m}}{\frac{Y}{n}}.$$
+La distirbución de $F$ se llama una distribución F con $m$ y $n$ grados de libertad, y se denota como $F_{m,n}$.
+
+
+La función de densidad es:
+$$f(x|m,n)= \frac{\Gamma\left(\frac{m+n}{2}\right) m^{m/2}n^{n/2}}{\Gamma(\frac{m}{2})\Gamma(\frac{n}{2})} \frac{x^{m/2-1}}{(mx+n)^{(m+n)/2}},~~~ 0<x,$$
+y $f(x|m,n)=0$ para $x\leq 0$.
+
+---
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| warning: false
+#| fig-width: 5
+#| fig-height: 5
+cord.x <- seq(0,5,0.05) 
+cord.y1 <- df(cord.x,2,1) 
+cord.y2 <- df(cord.x,2,5) 
+cord.y3 <- df(cord.x,2,10) 
+densidad = c(cord.y1,cord.y2,cord.y3)
+x = rep(cord.x,3)
+dist = c(rep("f21",length(cord.x)),
+         rep("f25",length(cord.x)),
+         rep("f210",length(cord.x)))
+datos <- data.frame(x,
+                    densidad,
+                    dist=factor(dist,levels=c("f21","f25","f210")))
+
+
+ggplot(datos) + geom_line(aes(x = x, y = densidad, color = factor(dist)))+
+    xlab("x") + ylab(expression(f(x))) + xlim(0,5)+
+   scale_color_manual(name = "Distribución", 
+                      values = c("red", "blue", "green"),
+                      labels = c(expression(F['2,1']),expression(F['2,5']),expression(F['2,10'])))+
+theme_bw() + theme(panel.grid.major = element_blank(),
+                   panel.grid.minor = element_blank(), 
+                   axis.ticks = element_blank(),
+                   legend.position="top")
+
+```
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| warning: false
+#| fig-width: 5
+#| fig-height: 5
+cord.x <- seq(0,5,0.05) 
+cord.y1 <- df(cord.x,1,2) 
+cord.y2 <- df(cord.x,5,2) 
+cord.y3 <- df(cord.x,10,2) 
+densidad = c(cord.y1,cord.y2,cord.y3)
+x = rep(cord.x,3)
+dist = c(rep("f12",length(cord.x)),
+         rep("f52",length(cord.x)),
+         rep("f102",length(cord.x)))
+datos <- data.frame(x,
+                    densidad,
+                    dist=factor(dist,levels=c("f12","f52","f102")))
+
+
+ggplot(datos) + geom_line(aes(x = x, y = densidad, color = factor(dist)))+
+    xlab("x") + ylab(expression(f(x))) + xlim(0,5)+
+   scale_color_manual(name = "Distribución", 
+                      values = c("red", "blue", "green"),
+                      labels = c(expression(F['1,2']),expression(F['5,2']),expression(F['10,2'])))+
+theme_bw() + theme(panel.grid.major = element_blank(),
+                   panel.grid.minor = element_blank(), 
+                   axis.ticks = element_blank(),
+                   legend.position="top")
+
+```
+:::
+
+::::
+
+
+## Teoremas relacionados
+
+**Teorema 3.1:** 
+
+1. Si $X$ tiene una distribución $F$ con $m$ y $n$ grados de libertad, entonces $Y=1/X$ también tiene una distribución $F$ con $n$ y $m$ grados de libertad.
+
+2. Si $X$ tiene una distribución t con $m$ grados de libertad, entonces $X^2$ tiene una distribución $F$ con $1$ y $m$ grados de libertad.
+
+## IC para poblaciones normales
+
+- Intervalos de confianza para $\mu$ ($\sigma^2$ conocido).
+- Intervalos de confianza para $\mu$ ($\sigma^2$ desconocido).
+- Intervalos de confianza para $\mu_1-\mu_2$ ($\sigma_1^2$ y $\sigma_2^2$ conocidas).
+- Intervalos de confianza para $\mu_1-\mu_2$ ($\sigma_1^2=\sigma_2^2$ desconocida).
+
+## Intervalos de confianza para $\mu$ ($\sigma^2$ conocido)
+	
+Sea $X_{1}, X_{2}, ... , X_{n}$ una muestra aleatoria de una población Normal con media $\mu$ y variancia $\sigma^2$, donde $\mu$ es desconocido pero $\sigma^2$ es conocido. Vamos a construir un intervalo de confianza bilateral para $\mu$ con probabilidad $1-\alpha$. 
+	
+- Comosidere el pivote a $Z = \dfrac{\bar{X} - \mu}{\dfrac{\sigma}{\sqrt{n}}}$, ya que $Z \sim N(0,1)$. Luego procedemos a encontrar los valores $a$ y $b$ que satisfacen $P(a \leq Z \leq b) = 1-\alpha$ y $P(Z < a) = P(Z > b) = \frac{\alpha}{2}$. 
+
+- Tenemos que
+
+$P(z_{\frac{\alpha}{2}} \leq Z \leq z_{1-\frac{\alpha}{2}}) = 1-\alpha$
+
+---
+
+- Sin embargo, sabemos que la distribución Normal Estándar es simétrica alrededor de cero, por lo que $z_{\frac{\alpha}{2}} = -z_{1-\frac{\alpha}{2}}$. Por lo tanto podemos escribir 
+$$a = -z_{1-\frac{\alpha}{2}} ~~\text{y}~~ b = z_{1-\frac{\alpha}{2}}$$
+	
+```{r}
+#| warning: false
+#| fig-width: 7
+#| fig-height: 5
+a <- qnorm(0.10)
+b <- qnorm(0.90)
+
+cord.x <- c(-3,seq(-3,a,0.001),a) 
+cord.y <- c(0,dnorm(seq(-3,a,0.001)),0) 
+
+cord.x2 <- c(b,seq(b,3,0.001),3) 
+cord.y2 <- c(0,dnorm(seq(b,3,0.001)),0)
+
+cord.x3 <- seq(a,b,0.001)
+cord.y3 <- dnorm(seq(a,b,0.001))
+
+## Grafico nuevo
+
+ggplot() + geom_polygon(aes(x = cord.x, y = cord.y), color = "black", fill = "grey") +
+geom_polygon(aes(x = cord.x2, y = cord.y2), color = "black", fill = "grey") +
+    geom_hline(yintercept = 0, linetype = 1 ) + 
+geom_vline(xintercept = c(a,b), linetype = "dashed" ) +
+geom_line(aes(x = c(cord.x,cord.x3,cord.x2), y = c(cord.y, cord.y3, cord.y2))) +
+annotate(geom="text", x = -0.05, y = dnorm(0)/4, label= expression(1-alpha), color="black")+
+annotate(geom="text", x = -1.5, y = dnorm(1)/5, label= expression(alpha/2), color="black") +
+annotate(geom="text", x = 1.5, y = dnorm(1)/5, label= expression(alpha/2), color="black") +
+scale_x_continuous(breaks = c(a,b), 
+                   labels= c(expression(-z[1-"\U03B1"/2]),
+                             expression(z[1-"\U03B1"/2])), ) +
+  xlab("") + ylab("") +
+theme_bw() + theme(panel.grid.major = element_blank(),
+                   panel.grid.minor = element_blank(), 
+                   axis.ticks = element_blank(),
+                   axis.text.y = element_blank(),
+                   axis.text.x = element_text(size = 15))
+```
+	
+Cuantiles de una distribución N(0,1)
+---
+
+- Con estos valores podemos proceder a despejar $\mu$ de la expresión $P(a \leq Z \leq b) = 1-\alpha$: 
+$$P(a \leq Z \leq b) = P\left(-z_{1-\frac{\alpha}{2}} \leq \dfrac{\bar{X} - \mu}{\dfrac{\sigma}{\sqrt{n}}} \leq z_{1-\frac{\alpha}{2}} \right)$$
+
+
+$$= P\left( \bar{X} - z_{1-\frac{\alpha}{2}} \dfrac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{1-\frac{\alpha}{2}} \dfrac{\sigma}{\sqrt{n}} \right) = 1-\alpha$$
+		
+- Por lo tanto, con confianza del $(1-\alpha)\%$, el intervalo $\bar{X} \pm z_{1-\frac{\alpha}{2}} \dfrac{\sigma}{\sqrt{n}}$ contiene al valor de $\mu$. 
+
+
+## Intervalos de confianza para $\mu$ ($\sigma^2$ desconocido)
+	
+- En este caso, debemos hacer uso de un nuevo pivote. Considere:
+
+$$T = \dfrac{\bar{X} - \mu}{\dfrac{s}{\sqrt{n}}}$$
+	
+- Recordemos que esta variable aleatoria se distribuye como una t-student con $n-1$ grados de libertad y cumple las condiciones de un pivote. 
+  - Está en términos de la muestra aleatoria (a través de $\bar{X}$ y $S$) y del parámetro desconocido $\mu$ y
+  - Adicionalmente su distribución es conocida y no depende de $\mu$. 
+  
+- Ahora procedemos a encontrar los valores de $a$ y $b$. 
+
+---
+
+- Las tablas de la t-student generalmente acumulan hacia la derecha, pero para efecto del curso, usamos las probabilidades acumuladas de las colas izquierdas.
+
+```{r}
+#| warning: false
+#| fig-width: 7
+#| fig-height: 5
+a <- qt(0.10, 15)
+b <- qt(0.90, 15)
+
+cord.x <- c(-3,seq(-3,a,0.001),a) 
+cord.y <- c(0,dt(seq(-3,a,0.001),15),0) 
+
+cord.x2 <- c(b,seq(b,3,0.001),3) 
+cord.y2 <- c(0,dt(seq(b,3,0.001),15),0)
+
+cord.x3 <- seq(a,b,0.001)
+cord.y3 <- dt(seq(a,b,0.001),15)
+
+#Grafico nuevo
+
+
+ggplot() + geom_polygon(aes(x = cord.x, y = cord.y), color = "black", fill = "grey") +
+      geom_hline(yintercept = 0, linetype = 1 ) + 
+geom_polygon(aes(x = cord.x2, y = cord.y2), color = "black", fill = "grey") +
+geom_vline(xintercept = c(a,b), linetype = "dashed" ) +
+geom_line(aes(x = c(cord.x,cord.x3,cord.x2), y = c(cord.y, cord.y3, cord.y2))) +
+annotate(geom="text", x = -0.05, y = dt(0,15)/4, label= expression(1-alpha), color="black")+
+annotate(geom="text", x = -1.8, y = dt(1,15)/5, label= expression(alpha/2), color="black") +
+annotate(geom="text", x = 1.8, y = dt(1,15)/5, label= expression(alpha/2), color="black") +
+scale_x_continuous(breaks = c(a,b), 
+                   labels= c(expression(-t[1-"\U03B1"/2]),
+                             expression(t[1-"\U03B1"/2])), ) +
+  xlab("") + ylab("") +
+theme_bw() + theme(panel.grid.major = element_blank(),
+                   panel.grid.minor = element_blank(), 
+                   axis.ticks = element_blank(),
+                   axis.text.y = element_blank(),
+                   axis.text.x = element_text(size = 15))
+```
+
+---
+
+$$P(a \leq T \leq b) =P(t_{\frac{\alpha}{2},n-1} \leq T \leq t_{1-\frac{\alpha}{2},n-1}) = P\left(-t_{1-\frac{\alpha}{2},n-1} \leq \dfrac{\bar{X} - \mu}{\dfrac{S}{\sqrt{n}}} \leq t_{1-\frac{\alpha}{2},n-1} \right).$$
+
+
+- Si despejamos el valor de $\mu$, obtenemos el intervalo $\bar{X} \pm t_{\frac{\alpha}{2}, n-1} \dfrac{s}{\sqrt{n}}$. 
+
+- Por lo tanto podemos concluir que con una confianza del $(1-\alpha)\%$ el intervalo $\bar{X} \pm t_{1-\frac{\alpha}{2}, n-1} \dfrac{s}{\sqrt{n}}$ contiene el verdadero valor de $\mu$. 
+
+## Intervalos de confianza para $\mu_{1} - \mu_{2}$ ($\sigma_1^2$ y $\sigma_2^2$ conocidas)
+	
+- Ahora supongamos que tenemos dos poblaciones normales e independientes y que obtenemos una muestra de cada una. 
+
+- Sean $X_{1}, X_{2}, ... , X_{n}$ y $Y_{1}, Y_{2}, ... , Y_{m}$ estas dos muestras aleatorias, tal que $X_{j} \sim N(\mu_{1}, \sigma^{2}_{1})$ y $Y_{i} \sim N(\mu_{2}, \sigma^{2}_{2})$, donde $\mu_{1}$ y $\mu_2$ son parámetros desconocidos y $\sigma^{2}_{1}$ y $\sigma^{2}_{2}$ son parámetros conocidos. Nos interesa construir un intervalo bilateral, con una confianza del $(1-\alpha)\%$, para $\mu_{1} - \mu_{2}$.
+	
+- Recordemos que $\bar{X} \sim N\left(\mu_{1}, \dfrac{\sigma^{2}_{1}}{n}\right)$ y $\bar{Y} \sim N\left(\mu_{2}, \dfrac{\sigma^{2}_{2}}{m}\right)$. Además, $\bar{X} - \bar{Y}$ se distribuye Normal con media $\mu_{1} - \mu_{2}$ y variancia $\dfrac{\sigma^{2}_{1}}{n} + \dfrac{\sigma^{2}_{2}}{m}$. 
+
+- Estandarizando dicha variable, tenemos un pivote:
+	
+$$Z = \dfrac{(\bar{X} - \bar{Y}) - (\mu_{1} - \mu_{2})}{\sqrt{\dfrac{\sigma^{2}_{1}}{n} + \dfrac{\sigma^{2}_{2}}{m}}}$$
+
+--- 
+
+- Siguiendo el mismo paso del primer caso de esta sección, obtener que $a = -z_{1-\frac{\alpha}{2}}$ y $b = z_{1-\frac{\alpha}{2}}$. Ahora procedemos a despejar nuestro parámetro de interés, $\mu_{1} - \mu_{2}$, de la expresión $P(a \leq Z \leq b) = 1-\alpha$. 
+
+$$P(a \leq Z \leq b) = P\left(-z_{1-\frac{\alpha}{2}} \leq \dfrac{(\bar{X} - \bar{Y}) - (\mu_{1} - \mu_{2})}{\sqrt{\dfrac{\sigma^{2}_{1}}{n} + \dfrac{\sigma^{2}_{2}}{m}}} \leq z_{1-\frac{\alpha}{2}} \right)=1-\alpha.$$
+
+- El IC para $\mu_{1} - \mu_{2}$ está dado por  $(\bar{X} - \bar{Y}) \pm z_{1-\frac{\alpha}{2}} \sqrt{\dfrac{\sigma^{2}_{1}}{n} + \dfrac{\sigma^{2}_{2}}{m}}$. 
+
+**Nota:** Si fuese el caso donde las variancias poblaciones son iguales (*i.e.* $\sigma^{2}_{1} = \sigma^{2}_{2} = \sigma^{2}$) Entonces podriamos escribir el intervalo como: 
+	
+$$(\bar{X} - \bar{Y}) \pm z_{1-\frac{\alpha}{2}} \cdot \sigma \sqrt{\dfrac{1}{n} + \dfrac{1}{m}}.$$
+	
+	
+---
+
+## Intervalos de confianza para $\mu_{1} - \mu_{2}$ ($\sigma_1^2=\sigma_2^2$ desconocida)
+
+- ¿Por qué es importante el supuesto de homoscedasticidad ($\sigma^{2}_{1} = \sigma^{2}_{2} = \sigma^{2}$)? Para poder encontrar un pivote satisfactorio. 
+
+- Considere
+$$T = \dfrac{Z}{\sqrt{\dfrac{W}{v}}}$$
+donde $Z \sim N(0,1)$ y $W \sim \chi^{2}_{(v)}$. Para este caso podemos usar la misma $Z$ que usamos anteriormente:
+	
+$$Z = \dfrac{(\bar{X} - \bar{Y}) - (\mu_{1} - \mu_{2})}{\sigma \sqrt{\dfrac{1}{n} + \dfrac{1}{m}}}$$
+
+---
+
+- Ahora debemos construir una $\chi^2$ adecuada que nos permita cancelar el $\sigma$ que se encuentra en $Z$. Sabemos lo siguiente:
+$$\dfrac{(n-1)S^{2}_1}{\sigma^{2}} \sim \chi^{2}_{(n-1)}, \qquad \text{y} \qquad \dfrac{(m-1)S^{2}_2}{\sigma^{2}} \sim \chi^{2}_{(m-1)}$$
+donde $S^{2}_1$ y $S^{2}_2$ son las variancias muestrales de la primera y segunda población, respectivamente. También sabemos que la suma de ji-cuadrado es una ji-cuadrado con la suma de los grados de libertad:
+	
+$$W = \dfrac{(n-1)S^{2}_{1} + (m-1)S^{2}_{2} }{\sigma^{2}} \sim \chi^{2}_{(n+m-2)}$$
+
+---
+
+Si procedemos a dividir esta ji-cuadrado entre sus grados de libertad obtenemos:
+$$\dfrac{W}{v} = \dfrac{(n-1)S^{2}_{1} + (m-1)S^{2}_{2} }{\sigma^{2}(n+m-2)}$$
+	
+- Para simplificar un poco esta expresión vamos a definir $S^{2}_{p} = \dfrac{(n-1)S^{2}_{1} + (m-1)S^{2}_{2}}{(n+m-2)}$, por lo tanto
+$$\dfrac{W}{v} = \dfrac{S^{2}_{p}}{\sigma^{2}}$$
+- Ya con esto podemos definir una t-student, la cual tendría la forma:
+	
+$$T = \dfrac{(\bar{X} - \bar{Y}) - (\mu_{1} - \mu_{2})}{S_{p} \sqrt{\dfrac{1}{n} + \dfrac{1}{m}}}$$
+
+---
+
+	
+- Esta es una t-student con $n+m-2$ grados de libertad y la podemos usar como pivote pues cumple todas las condiciones y ya no está en términos de parámetros desconocidos. 
+
+- El procedimiento a seguir es similar al otro caso donde teniamos una t-student y luego de desarrollarlo obtenemos el intervalo 
+	
+$$\displaystyle (\bar{X} - \bar{Y}) \pm t_{1-\frac{\alpha}{2}, n+m-2} \cdot S_{p} \sqrt{\frac{1}{n} + \dfrac{1}{m}}$$ 
+	
+Concluimos que con una probabilidad de $1-\alpha$ el intervalo $(\bar{X} - \bar{Y}) \pm t_{1-\frac{\alpha}{2}, n+m-2} \cdot S_{p} \sqrt{\frac{1}{n} + \frac{1}{m}}$ contiene el verdadero valor de $\mu_{1} - \mu_{2}$.
+
+
+## Pivotes para distribuciones con forma posición-escala
+
+En los ejercicios 9.8 y 9.9 de Casella y Berger, se utiliza la siguiente tabla para clasificar las funciones de densidad según forma. En esta tabla se refieren a la mayoría de distribuciones de la familia Exponencial, en las cuales la función de densidad se puede reescribir siguiendo la forma de la primera columna.
+
+Forma        | Tipo       | Pivote       |
+---------------------|------------------|--------------|
+$f(x-\mu)$           | Posición         | $\bar{X}-\mu$|
+$\dfrac{1}{\sigma}f(x/\sigma)$ | Escala  | $\dfrac{\bar{X}}{\sigma}$|
+$\dfrac{1}{\sigma}f\left( \dfrac{x-\mu}{\sigma}\right)$|Posición-Escala| $\dfrac{\bar{X}-\mu}{S}$|
+
+
+---
+
+  
+Para entender las 3 formas, veamos los siguientes ejemplos: 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Para $f(x-\mu)$:
+
+Sea $X \sim N(\mu, 1)$, entonces la función de densidad es:
+
+$$f(x) = \dfrac{1}{\sqrt{2\pi}} e^{\dfrac{-1}{2}(x-\mu)^2} = g(z)$$
+en donde $z = x-\mu$, y $g(z)=\dfrac{1}{\sqrt{2\pi}} e^{\dfrac{-1}{2}z^2}$.
+
+:::
+  
+::: {.column width="50%"}
+- Para $\dfrac{1}{\sigma}f(x/\sigma)$:
+
+Sea $X \sim N(0, \sigma^2)$, entonces la función de densidad es:
+
+$$f(x) = \dfrac{1}{\sigma}\dfrac{1}{\sqrt{2\pi}} e^{\dfrac{-1}{2}(x/\sigma)^2} = \dfrac{1}{\sigma} g(z)$$
+en donde $z = x/\sigma$, y $g(z)=\dfrac{1}{\sqrt{2\pi}} e^{\dfrac{-1}{2}(z)^2}$.
+:::
+
+::::
+
+---
+
+- Finalmente, para $\dfrac{1}{\sigma}f\left(\dfrac{x-\mu}{\sigma}\right)$:
+
+Sea $X \sim N(\mu, \sigma^2)$, entonces la función de densidad es:
+
+$$f(x) = \dfrac{1}{\sigma}\dfrac{1}{\sqrt{2\pi}} e^{\dfrac{-1}{2}\left(\dfrac{x-\mu}{\sigma}\right)^2} = \dfrac{1}{\sigma} g(z)$$
+en donde $z = \dfrac{x-\mu}{\sigma}$, y $g(z)=\dfrac{1}{\sqrt{2\pi}} e^{\dfrac{-1}{2}(z)^2}$.
+
+
+
+# ¿Qué discutimos hoy?
+
+Estimación por intervalos, método del pivote. Fórmulas para las estimaciones por intervalo más comunes (media, diferencias de medias para distribuciones normales), 
+
+
+Intervalos de confianza para variancias, y para muestras grandes.
+
+

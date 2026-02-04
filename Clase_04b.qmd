@@ -1,0 +1,253 @@
+---
+title: "Estimación Puntual^1b^"
+subtitle: " [Curso: Teoría Estadística](https://shuwei325.github.io/teo-estad)"
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Shu Wei Chou Chen
+    url: https://shuwei325.github.io
+    orcid: 0000-0001-5495-2486
+    email: shuwei.chou@ucr.ac.cr
+    affiliations: 
+    - name: Escuela de Estadística, Universidad de Costa Rica
+      url: https://www.estadistica.ucr.ac.cr/
+#date: last-modified
+lang: es  # español
+---
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(latex2exp)
+```
+
+
+# ¿Qué vamos a discutir hoy?
+
+* Hemos estudiado Insesgamiento, Sesgo, Error y Insesgamiento Asintótico.
+* Introdujimos el concepto de Error cuadrático medio (ECM).
+* Vamos a enfocar en sus propiedades del ECM y suficiencia.
+
+
+
+## Error Cuadrático Medio (ECM)
+
+**Definicion 2.4:** Error cuadrático medio. Supongamos que $\hat{\theta}$ es un estimador de un parámetro $\theta$, se define el *error cuadrático medio* de $\hat{\theta}$, denotado por $ECM(\hat{\theta}) = E\left[\left(\hat{\theta}-\theta\right)^2\right]$
+
+**Teorema 2.1:** Si $\hat{\theta}$ es un estimador de $\theta$, entonces $ECM(\hat{\theta}) = Var(\hat{\theta}) + \left[B(\hat{\theta})\right]^2$
+
+**NOTA:** Si un estimador $\hat{\theta}$ es insesgado para $\theta$ se cumple que $ECM(\hat{\theta}) = Var(\hat{\theta})$. 
+	
+
+## Error Cuadrático Medio
+
+**Ejemplo:** 
+
+Si $X_{1}, X_{2}, ... , X_{n}$ es una muestra aleatoria tal que $X_{j} \sim Pareto \left(2,\beta\right)$ y $X_{\left(1\right)}$ es un estimador de $\beta$, determine el error cuadrático medio de $X_{\left(1\right)}$. 
+	
+**Solución:** 
+
+Se demostró que $X_{(1)} \sim Pareto\left(2n,\beta\right)$ y que $B\left(X_{\left(1\right)}\right) = \frac{\beta}{2n-1}$. También sabemos que $Var\left(X_{\left(1\right)}\right) = \frac{2n\beta^{2}}{\left(2n-1\right)^{2}\left(2n-2\right)}$. Por lo tanto,
+	
+$ECM(X_{\left(1\right)}) = Var(X_{\left(1\right)}) +  B(X_{\left(1\right)})^{2}$ 
+
+$~~~~~~~~~~~~~~~~~~~~~=\frac{2n\beta^{2}}{\left(2n-1\right)^{2}\left(2n-2\right)} + \frac{\beta^2}{\left(2n-1\right)^2} = \frac{4n\beta^{2} - 2\beta^{2}}{\left(2n-1\right)^{2}\left(2n-2\right)} = \frac{\beta^2}{\left(2n-1\right)\left(n-1\right)}$
+
+
+## Eficiencia
+	
+La eficiencia de un estimador está relacionada con la variabilidad de dicho estimador, la cual se ve representada por el error cuadrático medio. Empezaremos con un ejemplo que compare la variabilidad entre dos estimadores: 
+	
+**Ejemplo:** Sea $X_{1}, X_{2}, ... , X_{n}$ una muestra aleatoria tal que 
+	
+$F_{X}(x) = \begin{cases} 0 \quad si \quad x < 0 \\ \left(\frac{x}{\theta}\right)^{5} \quad si \quad 0 \leq x \leq \theta \\ 1 \quad si \quad x > \theta \end{cases}$
+	
+$i.$ Sean $\overline{X}$ y $X_{(n)}$ dos estimadores de $\theta$. ¿Cuál de ellos tiene el menor error cuadrático medio? 
+
+**Solución:** Podemos reconocer que $X_{j} \sim Potencial\left(5,\theta\right)$. Sabemos que para una variable aleatoria $Y$ tal que $Y \sim Potencial\left(\alpha, \beta\right)$ su valor esperado y varianza vienen dados por
+		
+$E(Y) = \frac{\alpha\beta}{\alpha+1} \qquad Var(Y) = \frac{\alpha \beta^{2}}{\left(\alpha+1\right)^{2}\left(\alpha+2\right)}$
+		
+
+
+## Eficiencia
+	
+Empezando por $\overline{X}$ tenemos lo siguiente,
+		
+$E(\overline{X}) = E(X) = \frac{5\theta}{6}$
+		
+$\Rightarrow B(\overline{X}) = \frac{5\theta}{6} - \theta = \frac{-\theta}{6}$
+		
+$Var(\overline{X}) = \frac{Var(X)}{n} = \frac{5\theta^{2}}{252n}$
+		
+$\Rightarrow ECM(\overline{X}) = Var(\overline{X}) + B(\overline{X})^{2} = \frac{5\theta^{2}}{252n} + \frac{\theta^2}{36} = \frac{\theta^{2}\left(5+7n\right)}{252n}$
+		
+Procedemos a obtener el error cuadrático medio de $X_{(n)}$ pero, primero hay que encontrar cómo se distribuye este estimador,
+		
+$F_{X_{\left(n\right)}}\left(x\right) = \left[F_{X}\left(x\right)\right]^{n} = \left[\left(\frac{x}{\theta}\right)^{5}\right]^{n} = \left(\frac{x}{\theta}\right)^{5n}$
+		
+
+## Eficiencia
+
+Podemos reconocer con esto que $X_{(n)} \sim Potencial\left(5n,\theta\right)$. Ya con esto podemos proceder a obtener la información que necesitamos para el error cuadrático medio:
+		
+$$E(X_{(n)}) = \frac{5n\theta}{5n+1}$$
+		
+$\Rightarrow B(X_{(n)}) = \frac{5n\theta}{5n+1} - \theta = \frac{-\theta}{5n+1}$
+		
+$Var(X_{(n)}) = \frac{5n\theta^2}{\left(5n+1\right)^{2}\left(5n+2\right)}$
+		
+$\Rightarrow ECM(X_{(n)}) = \frac{5n\theta^2}{\left(5n+1\right)^{2}\left(5n+2\right)} + \frac{\theta^2}{\left(5n+1\right)^{2}} = \frac{10n\theta^{2} + 2\theta^{2}}{\left(5n+1\right)^{2}\left(5n+2\right)} = \frac{2\theta^2}{\left(5n+1\right)\left(5n+2\right)}$
+		
+Observando ambos resultados concluimos que $ECM(\overline{X}) > ECM(X_{(n)}), \quad \forall n > 1$.
+		
+
+## Eficiencia
+
+$ii.$ Encontrar dos estimadores insesgados, $\hat{\theta}_{1}$ y $\hat{\theta}_{2}$, a partir de $\overline{X}$ y $X_{(n)}$ respectivamente. ¿Cuál de ellos tiene menor variabilidad? 
+
+Solución: Podemos notar que los estimadores insesgados serían los siguientes:
+		
+$\hat{\theta}_{1} = \frac{6\overline{X}}{5} \qquad \qquad \hat{\theta}_{2} = \frac{5n+1}{5n}X_{(n)}$
+		
+$Var(\hat{\theta}_{1}) = Var\left(\frac{6\overline{X}}{5}\right) = \frac{36}{25}Var(\overline{X}) = \frac{36}{25} \cdot \frac{5\theta^{2}}{252n} = \frac{\theta^2}{35n}$
+
+\begin{align*}
+Var(\hat{\theta}_{2}) &= Var\left(\frac{5n+1}{5n}X_{(n)}\right) = \frac{\left(5n+1\right)^2}{25n^2}Var(X_{(n)}) \\
+&= \frac{\left(5n+1\right)^2}{25n^2} \cdot \frac{5n\theta^2}{\left(5n+1\right)^{2}\left(5n+2\right)} = \frac{\theta^2}{5n\left(5n+2\right)}
+\end{align*}
+
+
+## Eficiencia
+
+En este caso $\frac{\theta^2}{5n\left(5n+2\right)} < \frac{\theta^2}{35n} \forall n > 1$. 
+		
+Se dice que $\hat{\theta}_{2}$ es relativamente más eficiente que $\hat{\theta}_{1}$.
+
+**NOTA:** En general, si se tienen dos estimadores insesgados de un parámetro $\theta$, es más eficiente aquel que tiene menor varianza. Si se comparan estimadores sesgados se comparan los errores cuadráticos medios en lugar de las variancias. 
+	
+**Definicion 2.5:** *Eficiencia relativa.* Si $\hat{\theta}_{1}$ y $\hat{\theta}_{2}$ son estimadores insesgados de un parámetro $\theta$, se define la *eficiencia relativa* de $\hat{\theta}_{1}$ con respecto a $\hat{\theta}_{2}$: 
+  $eff(\hat{\theta}_{1},\hat{\theta}_{2}) = \frac{Var(\hat{\theta}_{2})}{Var(\hat{\theta}_{1})}$
+
+En el ejemplo anterior:
+	
+$eff(\hat{\theta}_{1},\hat{\theta}_{2}) = \frac{\frac{\theta^2}{5n\left(5n+2\right)}}{\frac{\theta^2}{35n}} = \frac{7}{5n+2} < 1 \quad \forall n>1$
+	
+Esto significa que $\hat{\theta}_{2}$ es más eficiente que $\hat{\theta}_{1}$.
+
+
+## Eficiencia
+	
+En la siguiente figura, se observa $\hat{\theta}_1$ y $\hat{\theta}_2$ calculados de 100 muestras independientes. En dicha simnulación, se supone que $\theta=5$ y $n=45$. Podemos observar como la eficiencia de los dos estimadores.
+
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+n <- 45
+theta <- 5
+R <- 100
+
+theta1<- numeric()
+theta2<- numeric()
+for(i in 1:R){
+  muestra_unif<-runif(n,0,1)
+  muestra_potencial<-(muestra_unif)^(1/5)*theta
+  theta1[i] <- mean(muestra_potencial)*6/5
+  theta2[i] <- max(muestra_potencial)*(5*n+1)/(5*n)
+}
+
+base1 = data.frame(estimacion=theta1,estimador="theta1",index=1:R)
+base2 = data.frame(estimacion=theta2,estimador="theta2",index=1:R)
+base = rbind(base1,base2)
+
+base %>% ggplot() + 
+  geom_point(aes(index,estimacion,colour=estimador))+
+  xlab("Muestra") + theme_bw()
+```
+
+
+
+
+## Eficiencia
+
+En general, para buscar la eficiencia al estimar un parámetro se requiere determinar el estimador insesgado $\hat{\theta}$ que tiene variancia mínima. 
+
+**Teorema 2.2:**. *Desigualdad de Cramer-Rao.* Sea $X_{1}, X_{2}, ... , X_{n}$ una muestra aleatoria sobre una población con parámetro desconocido $\theta$ con función de densidad $f_{X}(x|\theta)$, cuyo dominio no depende de $\theta$. Si $\hat{\theta}$ es un estimador insesgado para $\theta$, entonces en general: 
+$$Var(\hat{\theta}) \geq \frac{1}{I(\theta)},$$ 
+donde $I(\theta)$ se llama la *información de Fisher* y se define como $I(\theta) = \left[nE\left(-\frac{\partial^{2}\ln(f_{X}(x))}{\partial \theta^{2}}\right)\right]$. 
+
+- Si $Var(\hat{\theta}) = 1/I(\theta)$ entonces $\hat{\theta}$ es un estimador insesgado de variancia mínima para $\theta$. 
+
+
+## Eficiencia
+	
+**Ejemplo:** Sea $X_{1}, X_{2}, ... , X_{n}$ una muestra aleatoria de una población Normal con media $\mu$ y variancia $\sigma^{2}$. Demuestre que $\overline{X}$ es un estimador insesgado de variancia mínima (EIVM) para $\mu$.
+	
+**Solución:** Ya sabemos de ejemplos anteriores que $\overline{X}$ es insesgado para $\mu$. Hay que demostrar que es de variancia mínima utilizando la desigualdad de Cramer-Rao. 
+	
+Sabemos que en este caso $f_{X}(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$.
+	
+$\Rightarrow \ln(f_{X}(x)) = \ln\left(\frac{1}{\sqrt{2\pi}\sigma}\right) - \frac{(x-\mu)^2}{2\sigma^2} \Rightarrow \frac{\partial\ln(f_{X}(x))}{\partial\mu} = \frac{x-\mu}{\sigma^{2}}$
+	
+$\Rightarrow \frac{\partial^{2}\ln(f_{X}(x))}{\partial\mu^{2}} = \frac{-1}{\sigma^2} \Rightarrow -\frac{\partial^{2}\ln(f_{X}(x))}{\partial\mu^{2}} = \frac{1}{\sigma^2}$
+
+$\Rightarrow I^{-1}(\mu) =  \left[nE\left(-\frac{\partial^{2}\ln(f_{X}(x))}{\partial \mu^{2}}\right)\right]^{-1} = \left[ \frac{n}{\sigma^2}\right]^{-1}  = \frac{\sigma^2}{n}$
+
+--- 
+
+De antemano ya sabiamos que $Var(\overline{X}) = \frac{\sigma^2}{n}$ que como vemos es igual a la información de Fisher para $\mu$, por lo que podemos concluir que $\overline{X}$ es un estimador insesgado de variancia mínima para $\mu$. 
+
+## Ejercicios
+
+1. Sea $X_1, . . . , X_n$ denote una variable aleatoria que se distribuye como Uniforme $(0, \theta)$, con $\theta >0$ es un parámetro desconocido. Denote $\bar{X}$ como la media muestral.
+
+a) ¿Es $\bar{X}$ un estimador insesgado para $\theta$? Explique su respuesta.
+
+b) Encuentre un estimador insesgado para $\theta$.
+
+c) Encuentre la variancia del estimador de la parte anterior. 
+
+d) Sugiera un estimador alternativo para $\theta$.
+
+
+## Ejercicios
+
+
+2. Sean $X_1, . . . , X_n, X_{n + 1}, . . . , X_{n+m}$ variables aleatorias independientes e idénticamente distribuidas con densidad Normal de media $\mu$ y varianza $\sigma^2_X$. Se desea estimar $\mu$, pero los valores individuales de las variables se han extraviado y se dispone sólo de las medias:
+
+$$\bar{X_1}=\frac{1}{n}\sum_{i=1}^{n}X_i,~~~ \bar{X_2}=\frac{1}{m}\sum_{i=n+1}^{n+m}X_i$$
+
+Para integrar las dos fuentes de información se utiliza un estimador de la forma $\hat{X} = \lambda \bar{X_1} + (1 − \lambda)\bar{X_2}$, donde $0 \leq \lambda \leq 1$. 
+Probar que un estimador de este tipo es insesgado para $\mu$ indicando además qué valor define el mejor $\lambda$ de todos ellos.
+
+
+
+## Ejercicios 
+
+Sea $X_1,\dots, X_n\sim \text{Poisson}(\theta)$. Muestre que $\bar X_n$ es un estimador eficiente de $\theta$. Es decir, compruebe que la varianza de $\bar X_n$ es igual a su Cota de Cramer-Rao 
+
+
+\begin{equation*}
+f(x \vert \lambda)=\operatorname{Pr}(X=x)=\frac{\lambda^{x} e^{-\lambda}}{x !}
+\end{equation*}
+
+
+## ¿Qué discutimos hoy?
+
+ECM y propiedades de los estimadores: insesgado, eficiente. 
+
+Práctica en grupos.
+
+Próxima clase: consistente y suficiente. 
+
+
+
+
+
+
+
+
+

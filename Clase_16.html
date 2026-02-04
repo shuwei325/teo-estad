@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="Clase_16_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Clase_16_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Clase_16_files/libs/quarto-html/popper.min.js"></script>
+<script src="Clase_16_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Clase_16_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Clase_16_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Clase_16_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <meta name="author" content="Shu Wei Chou Chen">
+  <title>Alternativas no paramétricas1</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Clase_16_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Clase_16_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="Clase_16_files/libs/revealjs/dist/theme/quarto-648bbac8bff2f14ab517ece465d6d485.css">
+  <link href="Clase_16_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Clase_16_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Clase_16_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Clase_16_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Alternativas no paramétricas<sup>1</sup></h1>
+  <p class="subtitle"><a href="https://shuwei325.github.io/teo-estad">Curso: Teoría Estadística</a></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://shuwei325.github.io">Shu Wei Chou Chen</a> <a href="https://orcid.org/0000-0001-5495-2486" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:shuwei.chou@ucr.ac.cr">shuwei.chou@ucr.ac.cr</a>
+</div>
+        <p class="quarto-title-affiliation">
+            <a href="https://www.estadistica.ucr.ac.cr/">
+            Escuela de Estadística, Universidad de Costa Rica
+            </a>
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="qué-vamos-a-discutir-hoy" class="slide level2">
+<h2>¿Qué vamos a discutir hoy?</h2>
+<ul>
+<li>Hemos visto hasta ahora sobre
+<ul>
+<li>Estimadores puntuales,</li>
+<li>Intervalos de confianza, y</li>
+<li>Contrastes de hipótesis.</li>
+</ul></li>
+<li>Ahora:
+<ul>
+<li>Estadística no paramétirca:
+<ul>
+<li>Estimación de densidad vía histograma y kernel.</li>
+<li>Bootstrap.</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="cell">
+<style type="text/css">
+code {
+  font-size: 1.4em;
+  /* or try font-size: xx-large; */
+}
+</style>
+</div>
+</section>
+<section id="motivación" class="slide level2">
+<h2>Motivación</h2>
+<h3 id="ejemplo-la-exactitud-de-una-media-muestral.">Ejemplo: La exactitud de una media muestral.</h3>
+<p>Se tienen datos de sobrevivencia de 16 ratones luego de una cirugía de prueba: 9 ratones en el grupo control y 7 ratones en el grupo de tratamiento.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Grupo</th>
+<th style="text-align: center;">Tiempo de sobrevivencia(días)</th>
+<th style="text-align: right;">Media</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tratamiento</td>
+<td style="text-align: center;">94,197,16,38,99,141,23</td>
+<td style="text-align: right;">86.86</td>
+</tr>
+<tr class="even">
+<td>Control</td>
+<td style="text-align: center;">52,104,146,10,51,30,40,27,46</td>
+<td style="text-align: right;">56.22</td>
+</tr>
+</tbody>
+</table>
+<p>¿Podemos decir que el tratamiento es efectivo?</p>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>En estadística, resolvemos esa pregunta estimando <span class="math inline">\(\bar{X}- \bar{Y} = 30.63\)</span>. El problema es cómo calcular la variabilidad, ¿podemos suponer lo mismo de siempre?</p></li>
+<li><p>Tenemos dos opciones:</p>
+<ul>
+<li><p>la primera utilizar el teorema del límite central (teoría asintótica).</p></li>
+<li><p>La segunda es utilizar el estadístico:</p></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[T = \frac{\bar{X}- \bar{Y}}{\sqrt{\hat{ee}_{\bar{X}}^2 + \hat{ee}_{\bar{Y}}^2}}\]</span> - ¿Cuál es el problema? En el caso asintótico, necesitamos de una muestra grande, y en el segundo caso, la distribución de <span class="math inline">\(T\)</span> NO es conocida (podríamos usar la aproximación de Satterthwaite, pero eso sería solo una aproximación).</p>
+<ul>
+<li>La solución es usar Bootstrap</li>
+<li>Idea básica: <a href="https://seeing-theory.brown.edu/frequentist-inference/es.html">https://seeing-theory.brown.edu/frequentist-inference/es.html</a></li>
+</ul>
+</section>
+<section id="estadística-paramétrica-y-no-paramétrica" class="slide level2">
+<h2>Estadística paramétrica y no paramétrica</h2>
+<p><strong>Definición:</strong> La <span class="alert">inferencia estadística</span> es el procedimiento de producir afirmaciones probabilísticas sobre alguna (o toda) parte del modelo estadístico.</p>
+<p><strong>Definición:</strong> La <span class="alert">estadística paramétrica</span> consiste en realizar inferencia cuando el modelo estadístico puede ser representado por medio de uno o varios (finitos) parámetros desconocidos de una distribución.</p>
+<p><strong>Definición:</strong> dos definiciones informales de la <span class="alert">estadística no paramétrica</span>:</p>
+<ol type="1">
+<li>Inferencia en modelos estadísticos que son de dimensión infinita.</li>
+<li>Conjunto de herramientas cuyo objetivo es realizar inferencia usando los menos supuestos posibles.</li>
+</ol>
+</section>
+<section id="modelos-estadísticos-y-familias-de-modelos" class="slide level2">
+<h2>Modelos estadísticos y familias de modelos</h2>
+<p><strong>Ejemplo:</strong></p>
+<p>Una empresa produce componentes eléctricos y el interés es medir la vida útil del componente (en años). Suponemos que la vida útil de los componentes sigue una distribución exponencial con parámetro <span class="math inline">\(\beta&gt;0\)</span>.</p>
+<p><span class="math display">\[f(y)= \begin{cases}\frac{1}{\beta} e^{-y/\beta}, &amp; 0 &lt; y &lt; \infty, \\ 0, &amp; y \leq 0, \end{cases}\]</span></p>
+<p><strong>Definición:</strong> Un <span class="alert">modelo estadístico</span> consiste en una identificación de variables aleatorias de interés, la especificación de una distribución conjunta, o una familia de posibles distribuciones conjuntas para unas variables aleatorias observables, la identificación de uno o varios parámetros de dichas distribuciones son desconocidas.</p>
+</section>
+<section class="slide level2">
+
+<p><strong>Ejemplos:</strong> Para el caso de componentes eléctricos, se tienen las variables aleatorias <span class="math inline">\(Y_1,...,Y_n\)</span> cuya <strong>distribución conjunta</strong> es:</p>
+<p><span class="math display">\[f(y_1,...,y_n|\beta)= \prod_{i=1}^n f(y_i|\beta),\]</span></p>
+<p>en donde <span class="math inline">\(f(y_i)\)</span> es la densidad de la distribución exponencial con parámetro <span class="math inline">\(\beta&gt;0\)</span>, <em>i.e.</em></p>
+<p><span class="math display">\[f(y)= \begin{cases}\frac{1}{\beta} e^{-y/\beta}, &amp; 0 &lt; y &lt; \infty, \\ 0, &amp; y \leq 0. \end{cases}\]</span></p>
+<p>La familia de posibles distribuciones conjuntas es <span class="math display">\[\left\lbrace  f(y_1,...,y_n|\beta), \beta &gt;0 \right\rbrace.\]</span></p>
+</section>
+<section id="estadística-paramétrica-y-no-paramétrica-1" class="slide level2">
+<h2>Estadística paramétrica y no paramétrica</h2>
+<p><strong>Ejemplos:</strong></p>
+<ul>
+<li class="fragment"><p>El ejemplo de componentes eléctricos corresponde a estadística paramétrica.</p></li>
+<li class="fragment"><p>Sea <span class="math inline">\(X_1,...,X_n\)</span> una muestra aleatoria de una población con función de distribución <span class="math inline">\(F\)</span>. Realizar inferencia sobre la función de distribución <span class="math inline">\(F(x)=P(X\leq x)\)</span> y la función de densidad <span class="math inline">\(f(x)=F'(x)\)</span>.</p>
+<ul>
+<li class="fragment">Como <span class="math inline">\(F\)</span> y <span class="math inline">\(f\)</span> no puede ser representada por medio de un conjunto finito de parámetros, la inferencia es no paramétrica.</li>
+</ul></li>
+<li class="fragment"><p>Sea <span class="math inline">\((Y_1, X_1), ... ,(Y_n,X_n)\)</span> una muestra aleatoria de dos variables aleatorias. Realizar inferencia sobre un modelo de regresión lineal <span class="math inline">\(Y_i=\beta X_i+\epsilon_i\)</span>, <span class="math inline">\(\epsilon_i \sim N(0,\sigma^2)\)</span>.</p>
+<ul>
+<li class="fragment">La inferencia es paramétrica, pues el modelo estadístico puede ser representado por <span class="math inline">\(\theta=(\beta,\sigma^2)\)</span>.</li>
+</ul></li>
+<li class="fragment"><p>Sea <span class="math inline">\((Y_1, X_1), ... ,(Y_n,X_n)\)</span> una muestra aleatoria de dos variables aleatorias. Realizar inferencia sobre un modelo de regresión <span class="math inline">\(Y_i=f(X_i)+\epsilon_i\)</span>.</p>
+<ul>
+<li class="fragment">La inferencia es no paramétrica.</li>
+</ul></li>
+</ul>
+</section>
+<section id="distribución-empírica" class="slide level2">
+<h2>Distribución empírica</h2>
+<ul>
+<li>Para una muestra <span class="math inline">\(X_1, \dots, X_n\)</span> de variables aleatorias con valores reales, independientes con distribución <span class="math inline">\(P\)</span>, definimos la distribución <span class="math inline">\(\hat{P}\)</span> como:</li>
+</ul>
+<p><span class="math display">\[\hat{P}(A) = \frac{1}{n}\sum_{i=1}^{n} I_A(X_i),\]</span> para <span class="math inline">\(A \subseteq \mathbb{R}\)</span> y <span class="math inline">\(I_A(X_i)\)</span> es la función indicadora definida como:</p>
+<p><span class="math display">\[I_A(X_i)=\left\lbrace \begin{aligned}
+                1 &amp; \text{,  si  } X_i \in A,  \\
+                0 &amp; \text{,  si  } X_i \notin A.
+\end{aligned} \right.\]</span></p>
+</section>
+<section class="slide level2">
+
+<p><strong>Ejemplo:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1000</span>)</span>
+<span id="cb1-2"><a href=""></a>(<span class="at">x=</span><span class="fu">runif</span>(<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">5</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1.6393935 3.7942324 0.5696820 3.4537757 2.5820120 0.3386898 3.6935743
+ [8] 2.9176752 1.0788570 1.2806120</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># A1= (0,1)</span></span>
+<span id="cb3-2"><a href=""></a>indicadoraA1 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-3"><a href=""></a><span class="fu">mean</span>(indicadoraA1)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># A2= (1,2)</span></span>
+<span id="cb5-2"><a href=""></a>indicadoraA2 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb5-3"><a href=""></a><span class="fu">mean</span>(indicadoraA2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># A3= (2,3)</span></span>
+<span id="cb7-2"><a href=""></a>indicadoraA3 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb7-3"><a href=""></a><span class="fu">mean</span>(indicadoraA3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co"># A4= (3,4)</span></span>
+<span id="cb9-2"><a href=""></a>indicadoraA4 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb9-3"><a href=""></a><span class="fu">mean</span>(indicadoraA4)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># A5= (4,5)</span></span>
+<span id="cb11-2"><a href=""></a>indicadoraA5 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb11-3"><a href=""></a><span class="fu">mean</span>(indicadoraA5)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>histograma <span class="ot">=</span> <span class="fu">hist</span>(x,<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="at">freq=</span><span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>histograma<span class="sc">$</span>counts</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 3 2 3 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>histograma<span class="sc">$</span>density</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2 0.3 0.2 0.3 0.0</code></pre>
+</div>
+</div>
+<img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-4-1.png" width="480" class="r-stretch"></section>
+<section class="slide level2">
+
+<ul>
+<li><p>Note que el conjunto <span class="math inline">\(A\)</span> se puede definir a conveniencia.</p></li>
+<li><p>Podría definir <span class="math inline">\(A=(0.5,3.5)\)</span> y calcular <span class="math inline">\(\hat{P}(A)\)</span> como:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>x</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1.6393935 3.7942324 0.5696820 3.4537757 2.5820120 0.3386898 3.6935743
+ [8] 2.9176752 1.0788570 1.2806120</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="co"># A5= (3,4)</span></span>
+<span id="cb20-2"><a href=""></a>indicadoraA6 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="fl">0.5</span>,<span class="fl">3.5</span>)</span>
+<span id="cb20-3"><a href=""></a><span class="fu">mean</span>(indicadoraA6)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><strong>Ejemplo:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>x<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb22-2"><a href=""></a><span class="fu">hist</span>(x,<span class="at">freq=</span><span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-6-1.png" width="480" class="r-stretch"></section>
+<section class="slide level2">
+
+<ul>
+<li><p><span class="math inline">\(\hat{P}\)</span> es la distribución empírica de la muestra <span class="math inline">\(X_1,...,X_n\)</span>.</p></li>
+<li><p><span class="math inline">\(\hat{P}\)</span> puede pensarse como una distribución que pone masa <span class="math inline">\(1/n\)</span> en cada observación <span class="math inline">\(X_i\)</span> (para valores que ocurren más de una vez la masa será un múltiplo de <span class="math inline">\(1/n\)</span>). Entonces, <span class="math inline">\(\hat{P}\)</span> es una distribución de probabilidad discreta con un espacio efectivo de muestreo <span class="math inline">\({X_1, \dots, X_n}\)</span>.</p></li>
+</ul>
+<p><strong>Resultados teóricos:</strong></p>
+<ul>
+<li><p>Puede demostrarse que <span class="math inline">\(\hat{P}\)</span> es <span class="alert">consistente</span> para estimar <span class="math inline">\(P\)</span>.</p></li>
+<li><p>Y además, <span class="math inline">\(\hat{P}\)</span> es el <span class="alert">estimador máximo verosímil</span> no paramétrico de <span class="math inline">\(P\)</span>, lo cual justifica que podamos estimar <span class="math inline">\(P\)</span> con <span class="math inline">\(\hat{P}\)</span> sin tener otra información acerca de P (como por ejemplo si P pertenece a una familia paramétrica).</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>Sea <span class="math inline">\(A \subseteq \mathbb{R}\)</span> (tal que <span class="math inline">\(P(A)\)</span> está definido), entonces la consistencia significa que: <span class="math inline">\(\hat{P}(A) \xrightarrow{p} P(A)\)</span> cuando <span class="math inline">\(n \rightarrow \infty\)</span>.</p></li>
+<li><p>Este resultado es una consecuencia directa de La Ley de los Grandes Números, ya que:</p></li>
+</ul>
+<p><span class="math display">\[n \hat{P}(A) = \sum_{i=0}^{n} I_A(X_i) \sim Bin(n, P(A))\]</span></p>
+<p>por lo que <span class="math inline">\(\hat{P}(A)\)</span> tiende a su valor esperado <span class="math inline">\(P(A)\)</span> cuando <span class="math inline">\(n \rightarrow \infty\)</span>. Este resultado puede formalizarse mediante:</p>
+<p><span class="math display">\[\sup_{A\in I}|\hat{P}(A)-P(A)| \rightarrow 0 \quad \text{cuando} \quad n \rightarrow \infty\]</span> donde <span class="math inline">\(I\)</span> es el conjunto de intervalos en <span class="math inline">\(\mathbb{R}\)</span>. En otras palabras, la distribución <span class="math inline">\(P(A)\)</span> puede ser aproximada por <span class="math inline">\(\hat{P}(A)\)</span> igual de bien para toda <span class="math inline">\(A\in I\)</span>.</p>
+</section>
+<section id="histograma" class="slide level2">
+<h2>Histograma</h2>
+<ul>
+<li><p>Para una muestra aleatoria <span class="math inline">\(X_1, \dots, X_n\)</span> de una población con función de densidad desconocida <span class="math inline">\(f\)</span>.</p></li>
+<li><p>Escoja <span class="math inline">\(x_0\)</span> y <span class="math inline">\(h\)</span> el ancho del segmento y calcule los límites de cada segmento: <span class="math display">\[B_j = \left[ x_0 + (j-1)h, x_0+jh \right],~~~ j \in \mathbb{Z}.\]</span></p></li>
+<li><p>Cuente cuántas observaciones caen en cada segmento <span class="math inline">\(j\)</span>, denotada por <span class="math inline">\(n_j\)</span>:</p></li>
+<li><p>Para cada segmento <span class="math inline">\(j\)</span>, calcule la frecuencia relativa <span class="math display">\[f_j = \frac{n_j}{nh}.\]</span></p></li>
+<li><p>Grafique el histograma usando barras de altura <span class="math inline">\(f_j\)</span> y ancho <span class="math inline">\(h\)</span>.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><strong>Ejemplo:</strong></p>
+<div class="columns">
+<div class="column add-space" style="width:44%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1000</span>)</span>
+<span id="cb23-2"><a href=""></a>n <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb23-3"><a href=""></a>x<span class="ot">=</span><span class="fu">rnorm</span>(n,<span class="dv">10</span>,<span class="dv">2</span>)</span>
+<span id="cb23-4"><a href=""></a><span class="fu">range</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5.906829 15.340143</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>h <span class="ot">=</span> <span class="fl">2.5</span></span>
+<span id="cb25-2"><a href=""></a>B1 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="fl">2.5</span>,<span class="dv">5</span>)</span>
+<span id="cb25-3"><a href=""></a>n_1 <span class="ot">=</span> <span class="fu">sum</span>(B1)</span>
+<span id="cb25-4"><a href=""></a>B2 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="dv">5</span>,<span class="fl">7.5</span>)</span>
+<span id="cb25-5"><a href=""></a>n_2 <span class="ot">=</span> <span class="fu">sum</span>(B2)</span>
+<span id="cb25-6"><a href=""></a>B3 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="fl">7.5</span>,<span class="dv">10</span>)</span>
+<span id="cb25-7"><a href=""></a>n_3 <span class="ot">=</span> <span class="fu">sum</span>(B3)</span>
+<span id="cb25-8"><a href=""></a>B4 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="dv">10</span>,<span class="fl">12.5</span>)</span>
+<span id="cb25-9"><a href=""></a>n_4 <span class="ot">=</span> <span class="fu">sum</span>(B4)</span>
+<span id="cb25-10"><a href=""></a>B5 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="fl">12.5</span>,<span class="dv">15</span>)</span>
+<span id="cb25-11"><a href=""></a>n_5 <span class="ot">=</span> <span class="fu">sum</span>(B5)</span>
+<span id="cb25-12"><a href=""></a>B6 <span class="ot">=</span> <span class="fu">between</span>(x,<span class="dv">15</span>,<span class="fl">17.5</span>)</span>
+<span id="cb25-13"><a href=""></a>n_6 <span class="ot">=</span> <span class="fu">sum</span>(B6)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:44%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>n_j <span class="ot">=</span> <span class="fu">c</span>(n_1,n_2,n_3,n_4,n_5,n_6)</span>
+<span id="cb26-2"><a href=""></a>f_j <span class="ot">=</span> n_j<span class="sc">/</span>(n<span class="sc">*</span>h)</span>
+<span id="cb26-3"><a href=""></a><span class="fu">cbind</span>(n_j,f_j)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     n_j   f_j
+[1,]   0 0.000
+[2,]   7 0.056
+[3,]  20 0.160
+[4,]  20 0.160
+[5,]   2 0.016
+[6,]   1 0.008</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>histograma <span class="ot">=</span> <span class="fu">hist</span>(x,<span class="at">breaks=</span><span class="fu">c</span>(<span class="fl">2.5</span>,<span class="dv">5</span>,<span class="fl">7.5</span>,<span class="dv">10</span>,<span class="fl">12.5</span>,<span class="dv">15</span>,<span class="fl">17.5</span>),<span class="at">freq=</span><span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>histograma<span class="sc">$</span>counts</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0  7 20 20  2  1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>histograma<span class="sc">$</span>density</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.000 0.056 0.160 0.160 0.016 0.008</code></pre>
+</div>
+</div>
+<img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-9-1.png" width="480" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column add-space" style="width:60%;">
+<ul>
+<li>Formalmente, el histograma es dado por <span class="math display">\[\hat{f}_h(x)=\frac{1}{nh} \sum_{i=1}^n \sum_{j} I(X_i \in B_j) I(x \in B_j),\]</span> donde <span class="math display">\[I(X_i \in B_j)=\left\lbrace \begin{aligned}
+              1 &amp; \text{,  si  } X_i \in B_j,  \\
+              0 &amp; \text{,  si  } X_i \notin B_j.
+\end{aligned} \right.\]</span></li>
+<li>Denote <span class="math inline">\(m_j\)</span> por el centro de cada segmento. Esto implica que la definición del histograma asigna para cada <span class="math inline">\(x\)</span> en el segmento <span class="math inline">\(B_j=\left[m_j-\frac{h}{2},m_j+\frac{h}{2} \right)\)</span> la misma estimación para <span class="math inline">\(f\)</span>, <span class="math inline">\(\hat{f}_h(m_j)\)</span>.</li>
+<li>Note que el área del histograma es <span class="math inline">\(1\)</span>.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><strong>Ejemplo anterior:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-10-1.png" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="fu">sum</span>(histograma<span class="sc">$</span>density<span class="sc">*</span>h)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><strong>Ejemplo:</strong> Variando <span class="math inline">\(h\)</span>, el tamaño del segmento</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1000</span>)</span>
+<span id="cb35-2"><a href=""></a>n <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb35-3"><a href=""></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(n,<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb35-4"><a href=""></a>(<span class="at">h1 =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">17</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -10.00  -8.75  -7.50  -6.25  -5.00  -3.75  -2.50  -1.25   0.00   1.25
+[11]   2.50   3.75   5.00   6.25   7.50   8.75  10.00</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>(<span class="at">h2 =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">13</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -10.000000  -8.333333  -6.666667  -5.000000  -3.333333  -1.666667
+ [7]   0.000000   1.666667   3.333333   5.000000   6.666667   8.333333
+[13]  10.000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a>(<span class="at">h3 =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">9</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -10.0  -7.5  -5.0  -2.5   0.0   2.5   5.0   7.5  10.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>(<span class="at">h4 =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">5</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -10  -5   0   5  10</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="fu">hist</span>(x,<span class="at">breaks=</span>h1,<span class="at">freq=</span><span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-13-1.png" width="288"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="fu">hist</span>(x,<span class="at">breaks=</span>h2,<span class="at">freq=</span><span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-13-2.png" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a><span class="fu">hist</span>(x,<span class="at">breaks=</span>h3,<span class="at">freq=</span><span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-14-1.png" width="288"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="fu">hist</span>(x,<span class="at">breaks=</span>h4,<span class="at">freq=</span><span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-14-2.png" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="propiedades-estadísticas-del-histograma" class="slide level2">
+<h2>Propiedades estadísticas del histograma</h2>
+<ul>
+<li><p>Si <span class="math inline">\(x_0=0\)</span>, entonces los segmentos están dados por <span class="math inline">\(B_j = \left[ (j-1)h, jh \right],~~~ j \in \mathbb{Z}\)</span>.</p></li>
+<li><p>Suponga que queremos estimar la densidad de un <span class="math inline">\(x \in B_j\)</span>. La estimación usando el histograma para estimar <span class="math inline">\(f(x)\)</span> es <span class="math display">\[\hat{f}_h(x)=\frac{1}{nh} \sum_{i=1}^n \sum_{j} I(X_i \in B_j) I(x \in B_j)=\frac{1}{nh} \sum_{i=1}^n I(X_i \in B_j)\]</span></p></li>
+<li><p><span class="math inline">\(\hat{f}_h(x)\)</span> es sesgado para estimar <span class="math inline">\(f(x)\)</span>.</p></li>
+<li><p>Calculemos la esperanza del estimador <span class="math inline">\(\hat{f}_h(x)\)</span>. <span class="math display">\[E\left(\hat{f}_h(x)\right)=\frac{1}{nh}\sum_{i=1}^n E\left\lbrace I(X_i \in B_j) \right\rbrace=\frac{1}{nh} n E\left\lbrace I(X_i \in B_j) \right\rbrace\]</span></p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Note que <span class="math inline">\(I(X_i \in B_j)\)</span> es una variable aleatoria definida como <span class="math display">\[I(X_i \in B_j)= \begin{cases} 1, \text{ con probabilidad } \int_{(j-1)h}^{jh} f(u) du, \\
+0,\text{ con probabilidad } 1-\int_{(j-1)h}^{jh} f(u) du\end{cases}\]</span></li>
+<li>Entonces, es un ensayo de Bernoulli y su esperanza es: <span class="math display">\[E\left\lbrace I(X_i \in B_j) \right\rbrace=\int_{(j-1)h}^{jh} f(u) du.\]</span></li>
+<li>Finalmente, tenemos que <span class="math display">\[E\left(\hat{f}_h(x)\right)=\frac{1}{nh} n E\left\lbrace I(X_i \in B_j) \right\rbrace=\frac{1}{h}  \int_{(j-1)h}^{jh} f(u) du.\]</span></li>
+<li><span class="alert">El sesgo</span> es dado por <span class="math display">\[B\left(\hat{f}_h(x)\right)=E\left(\hat{f}_h(x)\right)-f(x)= \frac{1}{h}  \int_{(j-1)h}^{jh} f(u) du - f(x).\]</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Usando aproximación de Taylor de <span class="math inline">\(f(x) - f(u)\)</span> alrededor de <span class="math inline">\(m_j=\left(j-\frac{1}{2}\right) h\)</span> de <span class="math inline">\(B_j\)</span>, tenemos <span class="math inline">\(f(x) - f(u) \approx f'(m_j)\left[m_j-x\right]\)</span>. Por lo tanto,</li>
+</ul>
+<p><span class="math display">\[B\left(\hat{f}_h(x)\right)=\frac{1}{h}  \int_{(j-1)h}^{jh} f(u) du - f(x)= \frac{1}{h}  \int_{(j-1)h}^{jh} f(u) - f(x)du \approx f'(m_j)\left[m_j-x\right].\]</span> <strong>Observaciones:</strong></p>
+<ul>
+<li>El sesgo es casi cero cuando <span class="math inline">\(x=m_j\)</span>, o sea en el punto medio de <span class="math inline">\(B_j\)</span>.</li>
+<li>El sesgo depende de la pendiente de <span class="math inline">\(f\)</span>.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>La variancia del estimador <span class="math inline">\(\hat{f}_h(x)\)</span>: <span class="math display">\[Var\left(\hat{f}_h(x)\right)=Var \left\lbrace \frac{1}{nh}\sum_{i=1}^n  I(X_i \in B_j) \right\rbrace =\frac{1}{n^2h^2} Var \left\lbrace \sum_{i=1}^n  I(X_i \in B_j) \right\rbrace\]</span> <span class="math display">\[=\frac{1}{n^2h^2} \left[\int_{(j-1)h}^{jh} f(u) du\right] \left[1-\int_{(j-1)h}^{jh} f(u) du\right] \]</span> Se puede mostrar que: <span class="math display">\[Var\left(\hat{f}_h(x)\right) \approx  \frac{1}{nh}f(x)\]</span></li>
+<li>Note que la variancia del estimador decrece cuando <span class="math inline">\(nh\)</span> crece, mientras que el sesgo del estimador decrece a cero si <span class="math inline">\(h\)</span> decrece.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>Recuerden que el <span class="alert">error cuadrático medio</span> es: <span class="math display">\[ECM\left(\hat{f}_h(x)\right)= Var\left(\hat{f}_h(x)\right)+\left[B\left(\hat{f}_h(x)\right)\right]^2.\]</span></p></li>
+<li><p>Para poder minimizar <span class="math inline">\(ECM\left(\hat{f}_h(x)\right)\)</span> se debe encontrar un equilibrio de <span class="math inline">\(h\)</span>, pero esto sirve solamente para un <span class="math inline">\(x\)</span> dado.</p></li>
+<li><p>Existe el <span class="alert">error cuadrático medio integrado (ECMI)</span> definido como <span class="math display">\[ECMI\left(\hat{f}_h(x)\right)=E\left\lbrace\int_{-\infty}^{\infty} \left[\hat{f}_h(x) - f(x) \right]^2 dx\right\rbrace\]</span> <span class="math display">\[=\int_{-\infty}^{\infty} E\left[\left(\hat{f}_h(x) - f(x) \right)^2 \right] dx=\int_{-\infty}^{\infty} ECM\left(\hat{f}_h(x)\right) dx.\]</span></p></li>
+<li><p>Se puede comprobar que el óptimo ancho del segmento es: <span class="math display">\[h_{opt} \sim n^{-1/3}.\]</span></p></li>
+</ul>
+</section>
+<section id="estimación-de-densidad-kernel" class="slide level2">
+<h2>Estimación de densidad Kernel</h2>
+<ul>
+<li><p>Idea básica del histograma para estimar <span class="math inline">\(f(x)\)</span> es: <span class="math display">\[\hat{f}_h(x) = \frac{\#\left\lbrace \text{observaciones que caen dentro del intervalo que contiene a }x \right\rbrace}{n \cdot (\text{ancho del intervalo})},\]</span> donde el intervalo <span class="math inline">\(B_i\)</span> está centrado en <span class="math inline">\(m_j\)</span>.</p></li>
+<li><p>La idea de la estimación de densidad por kernel es ligeramente diferente:</p></li>
+</ul>
+<p><span class="math display">\[\hat{f}_k(x) = \frac{\#\left\lbrace \text{observaciones que caen dentro del intervalo que está alrededor de }x \right\rbrace}{n \cdot (\text{ancho del intervalo})}.\]</span></p>
+<ul>
+<li>Esto se puede reescribir como: <span class="math display">\[\hat{f}_k(x) = \frac{1}{n \cdot 2h} \#\left\lbrace X_i \in [x-h,x+h)] \right\rbrace\]</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Si definimos <span class="alert">la función kernel uniforme</span>:</li>
+</ul>
+<p><span class="math display">\[K(u)=\frac{1}{2} I(|u|\leq 1),\]</span> donde <span class="math inline">\(u=(x-X_i)/h\)</span>.</p>
+<ul>
+<li>Podemos escribir ese estimador como:</li>
+</ul>
+<p><span class="math display">\[\begin{align}
+\hat{f}_k(x) &amp;= \frac{1}{nh} \sum_{i=1}^n K\left( \frac{x-X_i}{h} \right) \\
+&amp;=\frac{1}{nh} \sum_{i=1}^n \frac{1}{2} I\left(\left|\frac{x-X_i}{h}\right|\leq 1\right).
+\end{align}\]</span></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>¿Qué hace la función kernel uniforme?</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-15-1.png" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><strong>Ejemplo:</strong> Para una muestra de una población con distribución desconocida: <span class="math inline">\((1,3,3.3,7,6.5,9)\)</span>.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-17-1.png" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-18-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="diferentes-kernels" class="slide level2">
+<h2>Diferentes kernels</h2>
+<ul>
+<li><p>Existe una variedad de funciones de kernels.</p>
+<ul>
+<li>Uniforme: <span class="math inline">\(K(u)=\frac{1}{2} I(|u|\leq 1),\)</span></li>
+<li>Triangular: <span class="math inline">\(K(u)= (1-|u|) I(|u|\leq 1),\)</span></li>
+<li>Gaussiano: <span class="math inline">\(K(u)=\frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}u^2}\)</span></li>
+</ul></li>
+</ul>
+<p>Y otras como Epanechnikov, cudrática (biweight), triweight, coseno, etc.</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-19-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-20-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-21-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><strong>Ejemplo:</strong> Para una muestra de una población con distribución desconocida: <span class="math inline">\((1,3,3.3,7,6.5,9)\)</span>, estime la densidad usando el kernel gaussiano y <span class="math inline">\(h=0.5\)</span>.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-23-1.png" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-24-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><strong>Ejemplo:</strong> Para una muestra de una población con distribución desconocida: <span class="math inline">\((1,3,3.3,7,6.5,9)\)</span>, estime la densidad usando el kernel triangular y <span class="math inline">\(h=0.5\)</span>.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-26-1.png" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-27-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="variando-h" class="slide level2">
+<h2>Variando <span class="math inline">\(h\)</span></h2>
+<ul>
+<li>Con <span class="math inline">\(h=0.5,1,1.5,2\)</span>, lo que hace es suavizar más o menos la densidad estimada.</li>
+</ul>
+
+<img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-28-1.png" width="576" class="r-stretch"></section>
+<section id="en-r" class="slide level2">
+<h2>En R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="fl">3.3</span>,<span class="dv">7</span>,<span class="fl">6.5</span>,<span class="dv">9</span>)</span>
+<span id="cb47-2"><a href=""></a>kde<span class="ot">&lt;-</span><span class="fu">density</span>(x,<span class="at">kernel=</span><span class="st">"gaussian"</span>,<span class="at">bw=</span><span class="fl">0.5</span>)</span>
+<span id="cb47-3"><a href=""></a><span class="fu">plot</span>(kde)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-29-1.png" width="576" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="fl">3.3</span>,<span class="dv">7</span>,<span class="fl">6.5</span>,<span class="dv">9</span>)</span>
+<span id="cb48-2"><a href=""></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(x)</span>
+<span id="cb48-3"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb48-4"><a href=""></a>  <span class="fu">geom_density</span>(<span class="at">kernel=</span><span class="st">"gaussian"</span>,<span class="at">bw=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb48-5"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-30-1.png" width="576" class="r-stretch"></section>
+<section id="propiedades-estadísticas-del-estimador-de-densidad-basado-en-kernels" class="slide level2">
+<h2>Propiedades estadísticas del estimador de densidad basado en kernels</h2>
+<ul>
+<li><p>Se puede comprobar que el estimador <span class="math inline">\(\hat{f}_k(x)\)</span> es sesgado para estimar <span class="math inline">\(f(x)\)</span>.</p></li>
+<li><p>No entraremos en detalles sobre los cálculos del sesgo, variancia y el ECM y ECMI.</p></li>
+<li><p>Se puede comprobar que el óptimo ancho del segmento es: <span class="math display">\[h_{opt} \sim n^{-1/5}.\]</span></p></li>
+</ul>
+</section>
+<section id="ejemplo-con-la-distribución-poisson" class="slide level2">
+<h2>Ejemplo con la distribución Poisson</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a>x<span class="ot">&lt;-</span><span class="fu">rpois</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">lambda=</span> <span class="dv">10</span>)</span>
+<span id="cb49-2"><a href=""></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(x)</span>
+<span id="cb49-3"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb49-4"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb49-5"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-31-1.png" width="576" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb50-2"><a href=""></a>  <span class="fu">geom_density</span>(<span class="at">kernel=</span><span class="st">"gaussian"</span>,<span class="at">bw=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb50-3"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-32-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb51-2"><a href=""></a>  <span class="fu">geom_density</span>(<span class="at">kernel=</span><span class="st">"gaussian"</span>,<span class="at">bw=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb51-3"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Clase_16_files/figure-revealjs/unnamed-chunk-33-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="qué-discutimos-hoy" class="slide level2">
+<h2>¿Qué discutimos hoy?</h2>
+<ul>
+<li>Histograma</li>
+<li>Estimación de densidad por kernels.</li>
+</ul>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Clase_16_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Clase_16_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Clase_16_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Clase_16_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Clase_16_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Clase_16_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Clase_16_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Clase_16_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Clase_16_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Clase_16_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"wide","numbers":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

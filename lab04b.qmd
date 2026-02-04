@@ -1,6 +1,6 @@
 ---
 title: "lab04b: Contraste de hipótesis"
-subtitle: "XS3310 Teoría Estadística"
+subtitle: "[Curso: Teoría Estadística](https://shuwei325.github.io/teo-estad)"
 author: 
   name: "Shu Wei Chou Chen"
   affiliation: "Escuela de Estadística (UCR)"
@@ -146,6 +146,7 @@ estad_wald_resultado <- sapply(X,estad_wald)
 sum(estad_wald_resultado>qchisq(p=0.95,1))/K
 
 ```
+
 ## Con $n=50$ y $\alpha=0.1$
 
 ```{r}
@@ -166,6 +167,3 @@ estad_wald_resultado <- sapply(X,estad_wald)
 sum(estad_wald_resultado>qchisq(p=0.9,1))/K
 
 ```
-
-
-

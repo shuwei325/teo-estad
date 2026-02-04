@@ -1,6 +1,6 @@
 ---
 title: "lab05a: Bootstrap"
-subtitle: "XS3310 Teoría Estadística"
+subtitle: "[Curso: Teoría Estadística](https://shuwei325.github.io/teo-estad)"
 author: 
   name: "Shu Wei Chou Chen"
   affiliation: "Escuela de Estadística (UCR)"

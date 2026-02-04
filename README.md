@@ -12,7 +12,7 @@ diversas áreas.
 ## Presentaciones
 
 | Tema | Clases | Laboratorio |
-|---------------------|----------------------------|-----------------------|
+|----|----|----|
 | 1\. Introducción | [Clase01](XS3310-I25_01.html) |  |
 |  | [Clase02](XS3310-I25_02.html) |  |
 |  | [Clase03](XS3310-I25_03.html) | [Lab Tema 1](./lab01.html) |

@@ -1,6 +1,6 @@
 ---
 title: "lab02: Ilustración de EMV para muestras grandes"
-subtitle: "XS3310 Teoría Estadística"
+subtitle: "[Curso: Teoría Estadística](https://shuwei325.github.io/teo-estad)"
 author: 
   name: "Shu Wei Chou Chen"
   affiliation: "Escuela de Estadística (UCR)"
@@ -204,7 +204,6 @@ for(n in 1:length(N)){
 resultados = rlist::list.rbind(sd_MV_estimador)
 
 library(ggplot2)
-library(hrbrthemes)
 library(viridis)
 
 
