@@ -218,10 +218,10 @@
 <ul>
 <li><p><strong>Información importante</strong></p>
 <ol type="1">
-<li><a href="https://mv1.mediacionvirtual.ucr.ac.cr/course/view.php?id=39199">Mediación Virtual</a></li>
-<li><a href="https://shuwei325.github.io/XS3310-I25/Programa-XS3310.pdf">Programa del curso</a></li>
-<li><a href="https://forms.gle/6r7XSi5EwSYdrk8D6">Llenar el formulario (pendiente)</a></li>
-<li><a href="https://join.slack.com/t/teora-i25/shared_invite/zt-31gwglhsw-5lBmkz6AAndLf4kCgQIfsg">Slack</a></li>
+<li><a href="https://shuwei325.github.io/teo-estad">Mediación Virtual</a></li>
+<li><a href="https://shuwei325.github.io/teo-estad">Programa del curso</a></li>
+<li><a href="https://forms.gle/euz8suVheucsQjxm7">Llenar el formulario</a></li>
+<li><a href="https://shuwei325.github.io/teo-estad">Slack</a></li>
 </ol></li>
 <li><p><strong>Reglamentación</strong></p>
 <ul>
@@ -245,22 +245,87 @@
 <p><a href="https://seeing-theory.brown.edu" class="uri">https://seeing-theory.brown.edu</a></p>
 <p><a href="https://www.acsu.buffalo.edu/~adamcunn/probability/probability.html" class="uri">https://www.acsu.buffalo.edu/~adamcunn/probability/probability.html</a></p>
 </section>
-<section id="hasta-ahora-en-la-carrera-de-estadística-1" class="slide level2">
-<h2>Hasta ahora en la carrera de Estadística:</h2>
-<p>En medio del auge de ciencia de datos, datos grandes, y tantas puertas que la tecnología nos ha abierto.</p>
+<section class="slide level2">
 
-<img data-src="figs/ciencia_de_datos.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Ciencia de Datos vs Estadística.</p><p>¿Para qué necesitamos Teoría Estadística?</p>
-</section></section>
-<section>
-<section id="para-qué-necesitamos-teoría-estadística" class="title-slide slide level1 center">
-<h1>¿Para qué necesitamos Teoría Estadística?</h1>
+<p><strong>¿Qué es Ciencia de Datos?</strong></p>
 <ul>
-<li><p>Necesitamos entender el porqué los resultados teóricos funcionan.</p></li>
-<li><p>Por ejemplo, si tomamos el promedio de un conjunto de dato,</p>
+<li>Es un área interdisciplinaria que combina <span class="alert">estadística</span>, <span class="alert">matemática</span>, <span class="alert">computación</span>, para analizar datos de diversos tipos (bases de datos complejas).</li>
+<li>Involucran procesos como <span class="alert">recolección</span>, <span class="alert">limpieza</span>, <span class="alert">exploración</span>, <span class="alert">visualización</span>, <span class="alert">modelación de datos</span>, con el fin de resolver algún problema de un área de aplicación.</li>
+</ul>
+<p><strong>¿Qué es estadística?</strong></p>
 <ul>
-<li>¿Es el mejor estimador que podemos generar?</li>
-<li>¿Qué significa mejor?</li>
-<li>¿Puedo probar que efectivamente es el mejor?</li>
+<li>Es una ciencia o disciplina que estudia la <span class="alert">recolección</span>, <span class="alert">organización</span>, <span class="alert">análisis</span>, <span class="alert">interpretación</span> y <span class="alert">presentación de datos</span> (…).</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Actualmente, los términos de Ciencia de Datos y big data son utilizados frecuentemente.</li>
+<li>En 1980s, en una conferencia en la Universidad de Michigan, USA, C.F. Jeff Wu ya había sugerido en usar <em>Statistical Data Science</em>, o simplemente <em>Data Science</em>, en lugar de estadística para dar más visibilidad a los trabajos de los estadísticos.</li>
+<li>Tuckey (1962, 1977) presentó el concepto del análisis exploratorio de datos y recalcó la importancia de usar gráficos y tablas antes de realizar análisis inferencial.
+<ul>
+<li><a href="https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-33/issue-1/The-Future-of-Data-Analysis/10.1214/aoms/1177704711.full?tab=ArticleFirstPage">Tukey, J. W. (1962). The Future of Data Analysis. the Annals of Mathematical Statistics, 33, 1-67</a>.</li>
+<li><a href="https://doi.org/10.1007/978-0-387-32833-1_136">Tukey, J. W. (1977). Exploratory Data Analysis. Addison-Wesley</a>.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 49%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Ciencia de Datos</th>
+<th style="text-align: center;">Estadística</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Precisión de predicción.</td>
+<td style="text-align: center;">Importancia en el diagnóstico y los supuestos de los modelos.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Selecciona aquel modelo que es más preciso (minimiza el error).</td>
+<td style="text-align: center;">Se selecciona el modelo que es más consistente y parsimonioso.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">El objetivo es predecir.</td>
+<td style="text-align: center;">El objetivo usualmente es explicar asociaciones.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Métodos de caja negra.</td>
+<td style="text-align: center;">Transparencia con el modelo y las predicciones.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Objetivo común:</strong></p>
+<ul>
+<li>Aprender y extraer información útil de los datos.</li>
+</ul>
+</section>
+<section id="para-qué-necesitamos-teoría-estadística" class="slide level2">
+<h2>¿Para qué necesitamos Teoría Estadística?</h2>
+<ul>
+<li class="fragment"><p>Necesitamos entender: <strong>¿Por qué funcionan los resultados teóricos?</strong>.</p></li>
+<li class="fragment"><p>Por ejemplo, si tomamos el promedio de un conjunto de dato,</p>
+<ul>
+<li class="fragment">¿Es el mejor estimador que podemos generar?</li>
+<li class="fragment">¿Qué significa mejor?</li>
+<li class="fragment">¿Puedo probar que efectivamente es el mejor?</li>
+</ul></li>
+<li class="fragment"><p>Los análisis estadísticos se tratan de:</p>
+<ol type="1">
+<li class="fragment"><span class="alert">Algoritmo</span>, e</li>
+<li class="fragment"><span class="alert">Inferencia</span>.</li>
+</ol></li>
+<li class="fragment"><p>Ejemplo:</p>
+<ul>
+<li class="fragment">Queremos estimar <span class="math inline">\(\mu\)</span> la media poblacional.</li>
+<li class="fragment">Calculamos <span class="math inline">\(\bar{X}= \frac{1}{n} \sum\limits_{i=1}^{n} {X_i}\)</span> (algorítmo).</li>
+<li class="fragment">¿Qué tan preciso es <span class="math inline">\(\bar{X}\)</span>? (inferencia).</li>
 </ul></li>
 </ul>
 </section>
@@ -398,7 +463,7 @@ B(\alpha, \beta)=\int_0^1 y^{\alpha-1}(1-y)^{\beta-1} d y=\frac{\Gamma(\alpha) \
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="Clase_01_files/figure-revealjs/unnamed-chunk-3-1.png" width="480"></p>
+<p><img data-src="Clase_01_files/figure-revealjs/unnamed-chunk-2-1.png" width="480"></p>
 </figure>
 </div>
 </div>
@@ -410,7 +475,7 @@ B(\alpha, \beta)=\int_0^1 y^{\alpha-1}(1-y)^{\beta-1} d y=\frac{\Gamma(\alpha) \
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="Clase_01_files/figure-revealjs/unnamed-chunk-4-1.png" width="480"></p>
+<p><img data-src="Clase_01_files/figure-revealjs/unnamed-chunk-3-1.png" width="480"></p>
 </figure>
 </div>
 </div>
