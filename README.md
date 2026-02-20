@@ -1,4 +1,8 @@
-## DESCRIPCION:
+Este repositorio contiene materiales del curso Teoría Estadística
+(XS-3310) de la Escuela de Estadística, Universidad de Costa Rica,
+preparados por Shu Wei Chou Chen.
+
+## Descripción del curso:
 
 Este curso utiliza la teoría de la probabilidad en espacios discretos y
 continuos, así como el cálculo diferencial e integral, para comprender
@@ -7,7 +11,10 @@ estimación de parámetros y contraste de hipótesis, y desarrollar las
 herramientas de estadística contemporánea para sus aplicaciones en
 diversas áreas.
 
-**Profesor:** Shu Wei Chou Chen (<shuwei.chou@ucr.ac.cr>)
+**Profesores del curso (ciclo I-2026):**
+
+- **Grupo 1:** Shu Wei Chou Chen (<shuwei.chou@ucr.ac.cr>)
+- **Grupo 2:** Christopher Torres Rojas (<christopher.torres@ucr.ac.cr>)
 
 ## Presentaciones
 
