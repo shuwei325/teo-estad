@@ -6,8 +6,8 @@
 <script src="Clase_05b_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Clase_05b_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Clase_05b_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Clase_05b_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="Clase_05b_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Shu Wei Chou Chen">
   <title>Estimación Puntual2b</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="Clase_05b_files/libs/revealjs/dist/theme/quarto-648bbac8bff2f14ab517ece465d6d485.css">
+  <link rel="stylesheet" href="Clase_05b_files/libs/revealjs/dist/theme/quarto-829c66079de1ba6dba869a367cd4b667.css">
   <link href="Clase_05b_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Clase_05b_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Clase_05b_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -128,7 +128,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Estimación Puntual<sup>2b</sup></h1>
-  <p class="subtitle"><a href="https://shuwei325.github.io/teo-estad">Curso: Teoría Estadística</a></p>
+  <p class="subtitle"><a href="https://swchouchen.github.io/teo-estad">Curso: Teoría Estadística</a></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -609,13 +609,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -62,18 +62,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="lab04a_files/libs/clipboard/clipboard.min.js"></script>
 <script src="lab04a_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="lab04a_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="lab04a_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="lab04a_files/libs/quarto-html/popper.min.js"></script>
 <script src="lab04a_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="lab04a_files/libs/quarto-html/anchor.min.js"></script>
 <link href="lab04a_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="lab04a_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="lab04a_files/libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="lab04a_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="lab04a_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="lab04a_files/libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="lab04a_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="lab04a_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="lab04a_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="lab04a_files/libs/bootstrap/bootstrap-6e5ff12f349f7d7ee99023e5a7f49be9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="lab04a_files/libs/bootstrap/bootstrap-dark-1c59215f878e034bd7426c637fa661ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="lab04a_files/libs/bootstrap/bootstrap-6e5ff12f349f7d7ee99023e5a7f49be9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="lab04a_files/libs/bootstrap/bootstrap-0b716d6fe31096b8dc5b1cb48462c79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="lab04a_files/libs/bootstrap/bootstrap-dark-7c823468029c3b379f9b90e418026680.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="lab04a_files/libs/bootstrap/bootstrap-0b716d6fe31096b8dc5b1cb48462c79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -89,7 +90,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -296,7 +297,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">lab04a: Contraste de hipótesis</h1>
-<p class="subtitle lead"><a href="https://shuwei325.github.io/teo-estad">Curso: Teoría Estadística</a></p>
+<p class="subtitle lead"><a href="https://swchouchen.github.io/teo-estad">Curso: Teoría Estadística</a></p>
 </div>
 
 
@@ -330,9 +331,9 @@ window.Quarto = {
 <section id="paquetes" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Paquetes</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1000</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="ejemplo-con-la-distribución-exponencial" class="level1" data-number="2">
@@ -351,8 +352,8 @@ window.Quarto = {
 <p><span class="math display">\[\alpha_0=\operatorname{P}\left(\chi^2_{(2n)}&gt; \chi^2_{(1-\alpha_0,2n)}\right).\]</span> Luego, <span class="math inline">\(\frac{2}{\beta_0}k'= \chi^2_{(1-\alpha_0,2n)}\)</span> Es decir el contraste más potente de tamaño <span class="math inline">\(\alpha_0\)</span> consiste en rechazar <span class="math inline">\(H_0\)</span> si <span class="math display">\[\sum{X_i}&gt;k'=\frac{\beta_0}{2}\chi^2_{(1-\alpha_0,2n)}.\]</span> Note que es equivalente dejar en término de la distribución <span class="math inline">\(\chi^2\)</span>, es decir una región crítica que consiste en <span class="math inline">\(\frac{2}{\beta_0}\sum{X_i}&gt;\chi^2_{(1-\alpha_0,2n)}\)</span>.</p>
 <p>Por ejemplo, si <span class="math inline">\(n=10\)</span>, <span class="math inline">\(\beta_0=5\)</span> y <span class="math inline">\(\alpha_0=0.05\)</span>, el contraste más potente con tamaño <span class="math inline">\(0.05\)</span> consiste en rechazar <span class="math inline">\(H_0\)</span> si <span class="math display">\[\sum{X_i}&gt;k'=\frac{\beta_0}{2}\chi^2_{(1-\alpha_0,2n)}.\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">/</span><span class="dv">2</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="at">p=</span><span class="fl">0.95</span>,<span class="at">df=</span> <span class="dv">2</span><span class="sc">*</span>n)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">/</span><span class="dv">2</span><span class="sc">*</span><span class="fu">qchisq</span>(<span class="at">p=</span><span class="fl">0.95</span>,<span class="at">df=</span> <span class="dv">2</span><span class="sc">*</span>n)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 78.52608</code></pre>
 </div>
@@ -369,8 +370,8 @@ window.Quarto = {
 <p><span class="math display">\[=\operatorname{P}\left(\sum{X_i}&gt;78.5261|\beta\right)=\operatorname{P}\left(\sum{X_i}&gt;78.5261|\beta\right).\]</span></p>
 <p>Por ejemplo, para <span class="math inline">\(\beta=10\)</span>, tenemos que <span class="math inline">\(\sum{X_i}\sim \operatorname{Gamma}(n=10,\beta=10)\)</span>. Su probabilidad de la cola derecha a partir de <span class="math inline">\(78.525\)</span> es dada por</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pgamma</span>(<span class="fl">78.525</span>,<span class="at">shape=</span>n,<span class="at">scale=</span>beta)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pgamma</span>(<span class="fl">78.525</span>,<span class="at">shape=</span>n,<span class="at">scale=</span>beta)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7347486</code></pre>
 </div>
@@ -378,11 +379,11 @@ window.Quarto = {
 <p>Es decir <span class="math inline">\(\operatorname{Potencia}(10)=0.7347.\)</span></p>
 <p>Si se quiere evaluar en un rango de valores</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="dv">15</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Potencia <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pgamma</span>(<span class="fl">78.525</span>,<span class="at">shape=</span>n,<span class="at">scale=</span>beta)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Pot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(beta,Potencia)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>Pot, <span class="fu">aes</span>(<span class="at">x=</span>beta, <span class="at">y=</span>Potencia)) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -393,8 +394,8 @@ window.Quarto = {
 </div>
 <p>Por ejemplo, la potencia evaluada cuando <span class="math inline">\(H_0\)</span> es cierta (<span class="math inline">\(\beta=5\)</span>) es</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pgamma</span>(<span class="fl">78.525</span>,<span class="at">shape=</span>n,<span class="at">scale=</span>beta)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pgamma</span>(<span class="fl">78.525</span>,<span class="at">shape=</span>n,<span class="at">scale=</span>beta)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.05000524</code></pre>
 </div>
@@ -405,13 +406,13 @@ window.Quarto = {
 <h2 data-number="2.3" class="anchored" data-anchor-id="suponga-que-el-tiempo-promedio-verdadero-es-beta15.-simule-una-muestra-aleatoria-de-tamaño-n10.-concluya-el-problema."><span class="header-section-number">2.3</span> Suponga que el tiempo promedio verdadero es <span class="math inline">\(\beta=15\)</span>. Simule una muestra aleatoria de tamaño <span class="math inline">\(n=10\)</span>. Concluya el problema.</h2>
 <p>Se simula una muestra aleatoria de tamaño <span class="math inline">\(10\)</span>, suponiendo que la población es exponencial con parámetro <span class="math inline">\(15\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>muestra</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>muestra</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 15.0699303  7.7653946 36.5607662 32.4487335  7.1614457  2.5060514
  [7] 23.4573732  7.6638474 14.4222626  0.7577991</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(muestra)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(muestra)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 147.8136</code></pre>
 </div>
@@ -422,13 +423,13 @@ window.Quarto = {
 <h2 data-number="2.4" class="anchored" data-anchor-id="repita-el-ejercicio-3-pero-suponiendo-que-el-tiempo-promedio-verdadero-es-beta11.-simule-una-muestra-aleatoria-de-tamaño-n10.-concluya-el-problema."><span class="header-section-number">2.4</span> Repita el ejercicio 3 pero suponiendo que el tiempo promedio verdadero es <span class="math inline">\(\beta=11\)</span>. Simule una muestra aleatoria de tamaño <span class="math inline">\(n=10\)</span>. Concluya el problema.</h2>
 <p>Se simula una muestra aleatoria de tamaño <span class="math inline">\(10\)</span>, suponiendo que la población es exponencial con parámetro <span class="math inline">\(11\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">11</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>muestra</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">11</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>muestra</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  8.271628 18.588359  6.708886  9.367997 24.505987  1.062720  3.884172
  [8]  8.316690 23.252876  3.888139</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(muestra)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(muestra)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 107.8475</code></pre>
 </div>
@@ -503,13 +504,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

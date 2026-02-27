@@ -6,8 +6,8 @@
 <script src="Clase_09_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Clase_09_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Clase_09_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Clase_09_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="Clase_09_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Shu Wei Chou Chen">
   <title>Estimación por intervalo1</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Clase_09_files/libs/revealjs/dist/theme/quarto-648bbac8bff2f14ab517ece465d6d485.css">
+  <link rel="stylesheet" href="Clase_09_files/libs/revealjs/dist/theme/quarto-829c66079de1ba6dba869a367cd4b667.css">
   <link href="Clase_09_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Clase_09_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Clase_09_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -194,7 +194,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Estimación por intervalo<sup>1</sup></h1>
-  <p class="subtitle"><a href="https://shuwei325.github.io/teo-estad">Curso: Teoría Estadística</a></p>
+  <p class="subtitle"><a href="https://swchouchen.github.io/teo-estad">Curso: Teoría Estadística</a></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -329,18 +329,18 @@ P(a \leq U \leq b) &amp;= P\left( -\ln(0.95) \leq \dfrac{Y}{\beta} \leq -\ln(0.0
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
 <span id="cb1-2"><a href=""></a>beta <span class="ot">=</span> <span class="dv">5</span> </span>
-<span id="cb1-3"><a href=""></a>(<span class="at">y =</span> <span class="fu">rexp</span>(<span class="dv">1</span> , <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span>beta))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href=""></a>(<span class="at">y =</span> <span class="fu">rexp</span>(<span class="dv">1</span> , <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span>beta))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.621058</code></pre>
 </div>
 </div>
 <p>Si observamos <span class="math inline">\(Y=\)</span> 4.6211 de una distribución exponencial con <span class="math inline">\(\beta=5\)</span>, se obtiene el intervalo como sigue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>limite_inf <span class="ot">=</span> <span class="sc">-</span>y<span class="sc">/</span><span class="fu">log</span>(<span class="fl">0.05</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>limite_inf <span class="ot">=</span> <span class="sc">-</span>y<span class="sc">/</span><span class="fu">log</span>(<span class="fl">0.05</span>)</span>
 <span id="cb3-2"><a href=""></a>limite_sup <span class="ot">=</span> <span class="sc">-</span>y<span class="sc">/</span><span class="fu">log</span>(<span class="fl">0.95</span>)</span>
-<span id="cb3-3"><a href=""></a><span class="fu">c</span>(limite_inf,limite_sup)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href=""></a><span class="fu">c</span>(limite_inf,limite_sup)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1.542547 90.090882</code></pre>
 </div>
@@ -366,17 +366,17 @@ P(a \leq U \leq b) &amp;= P\left( -\ln(0.95) \leq \dfrac{Y}{\beta} \leq -\ln(0.0
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
 <span id="cb5-2"><a href=""></a>theta <span class="ot">=</span> <span class="dv">50</span> </span>
-<span id="cb5-3"><a href=""></a>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">1</span> , <span class="at">min=</span><span class="dv">0</span>, <span class="at">max =</span> <span class="dv">50</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href=""></a>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">1</span> , <span class="at">min=</span><span class="dv">0</span>, <span class="at">max =</span> <span class="dv">50</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15.38831</code></pre>
 </div>
 </div>
 <p>Si observamos <span class="math inline">\(X=\)</span> 15.3883 de una distribución uniforme con <span class="math inline">\((0,\theta=50)\)</span>, se obtiene el intervalo como sigue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>limite_inf <span class="ot">=</span> x<span class="sc">/</span><span class="fl">0.95</span></span>
-<span id="cb7-2"><a href=""></a><span class="fu">c</span>(limite_inf,<span class="cn">Inf</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>limite_inf <span class="ot">=</span> x<span class="sc">/</span><span class="fl">0.95</span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">c</span>(limite_inf,<span class="cn">Inf</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16.19822      Inf</code></pre>
 </div>
@@ -402,8 +402,8 @@ P(a \leq U \leq b) &amp;= P\left( -\ln(0.95) \leq \dfrac{Y}{\beta} \leq -\ln(0.0
 
 <p>Otra posibilidad es aprovechar algún software, si se sabe el valor de <span class="math inline">\(\alpha\)</span>. Por ejemplo, si <span class="math inline">\(\alpha=0.02\)</span>,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>alpha <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb9-2"><a href=""></a><span class="fu">qgamma</span>(<span class="fu">c</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>),<span class="at">shape=</span><span class="dv">20</span>,<span class="at">scale =</span> <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>alpha <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb9-2"><a href=""></a><span class="fu">qgamma</span>(<span class="fu">c</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>),<span class="at">shape=</span><span class="dv">20</span>,<span class="at">scale =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11.08213 31.84537</code></pre>
 </div>
@@ -437,8 +437,8 @@ P(a \leq U \leq b) &amp;= P\left( -\ln(0.95) \leq \dfrac{Y}{\beta} \leq -\ln(0.0
 <li>En la práctica, si usamos algún software, se debe tomar en cuenta cuál cola se usa. En R, si <span class="math inline">\(\alpha=0.05\)</span></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb11-2"><a href=""></a><span class="fu">qchisq</span>(<span class="fu">c</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>),<span class="at">df=</span><span class="dv">40</span>,<span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb11-2"><a href=""></a><span class="fu">qchisq</span>(<span class="fu">c</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>),<span class="at">df=</span><span class="dv">40</span>,<span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24.43304 59.34171</code></pre>
 </div>
@@ -798,13 +798,14 @@ P(a \leq U \leq b) &amp;= P\left( -\ln(0.95) \leq \dfrac{Y}{\beta} \leq -\ln(0.0
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

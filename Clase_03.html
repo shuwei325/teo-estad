@@ -6,8 +6,8 @@
 <script src="Clase_03_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Clase_03_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Clase_03_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Clase_03_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="Clase_03_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Shu Wei Chou Chen">
   <title>Introducción3</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Clase_03_files/libs/revealjs/dist/theme/quarto-648bbac8bff2f14ab517ece465d6d485.css">
+  <link rel="stylesheet" href="Clase_03_files/libs/revealjs/dist/theme/quarto-829c66079de1ba6dba869a367cd4b667.css">
   <link href="Clase_03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Clase_03_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Clase_03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -194,7 +194,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Introducción<sup>3</sup></h1>
-  <p class="subtitle"><a href="https://shuwei325.github.io/teo-estad">Curso: Teoría Estadística</a></p>
+  <p class="subtitle"><a href="https://swchouchen.github.io/teo-estad">Curso: Teoría Estadística</a></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -252,12 +252,12 @@ code {
 <section id="propiedades-de-la-media-y-variancia-muestral-caso-normal-1" class="slide level2">
 <h2>Propiedades de la media y variancia muestral (Caso Normal)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">pnorm</span>(<span class="dv">17</span>,<span class="at">mean=</span><span class="dv">15</span>,<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="dv">16</span><span class="sc">/</span><span class="dv">9</span>))<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">12</span>,<span class="at">mean=</span><span class="dv">15</span>,<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="dv">16</span><span class="sc">/</span><span class="dv">9</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">pnorm</span>(<span class="dv">17</span>,<span class="at">mean=</span><span class="dv">15</span>,<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="dv">16</span><span class="sc">/</span><span class="dv">9</span>))<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">12</span>,<span class="at">mean=</span><span class="dv">15</span>,<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="dv">16</span><span class="sc">/</span><span class="dv">9</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9209683</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># lo cual es equivalente a </span></span>
-<span id="cb3-2"><a href=""></a><span class="fu">pnorm</span>(<span class="fl">1.5</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.25</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># lo cual es equivalente a </span></span>
+<span id="cb3-2"><a href=""></a><span class="fu">pnorm</span>(<span class="fl">1.5</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.25</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9209683</code></pre>
 </div>
@@ -747,13 +747,14 @@ code {
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -6,8 +6,8 @@
 <script src="Clase_01_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Clase_01_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Clase_01_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Clase_01_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="Clase_01_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Shu Wei Chou Chen">
   <title>Introducción1</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Clase_01_files/libs/revealjs/dist/theme/quarto-648bbac8bff2f14ab517ece465d6d485.css">
+  <link rel="stylesheet" href="Clase_01_files/libs/revealjs/dist/theme/quarto-829c66079de1ba6dba869a367cd4b667.css">
   <link href="Clase_01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Clase_01_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Clase_01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -194,7 +194,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Introducción<sup>1</sup></h1>
-  <p class="subtitle"><a href="https://shuwei325.github.io/teo-estad">Curso: Teoría Estadística</a></p>
+  <p class="subtitle"><a href="https://swchouchen.github.io/teo-estad">Curso: Teoría Estadística</a></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -388,10 +388,10 @@
 <h2>Variable Aleatoria</h2>
 <p><strong>Ejemplo con la distribución binomial</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
 <span id="cb1-2"><a href=""></a>prob <span class="ot">=</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span><span class="dv">3</span>, <span class="at">prob=</span><span class="fl">0.4</span>)</span>
 <span id="cb1-3"><a href=""></a>acum <span class="ot">=</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span><span class="dv">3</span>, <span class="at">prob=</span><span class="fl">0.4</span>)</span>
-<span id="cb1-4"><a href=""></a><span class="fu">cbind</span>(x,prob,acum)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href=""></a><span class="fu">cbind</span>(x,prob,acum)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     x  prob  acum
 [1,] 0 0.216 0.216
@@ -399,13 +399,13 @@
 [3,] 2 0.288 0.936
 [4,] 3 0.064 1.000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>esperanza <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">*</span>prob)</span>
-<span id="cb3-2"><a href=""></a>esperanza</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>esperanza <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">*</span>prob)</span>
+<span id="cb3-2"><a href=""></a>esperanza</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>variancia <span class="ot">=</span> <span class="fu">sum</span>((x<span class="sc">-</span>esperanza)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>prob)</span>
-<span id="cb5-2"><a href=""></a>variancia</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>variancia <span class="ot">=</span> <span class="fu">sum</span>((x<span class="sc">-</span>esperanza)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>prob)</span>
+<span id="cb5-2"><a href=""></a>variancia</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.72</code></pre>
 </div>
@@ -457,9 +457,9 @@ B(\alpha, \beta)=\int_0^1 y^{\alpha-1}(1-y)^{\beta-1} d y=\frac{\Gamma(\alpha) \
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">0.01</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">0.01</span>)</span>
 <span id="cb7-2"><a href=""></a>densidad <span class="ot">=</span> <span class="fu">dbeta</span>(x, <span class="at">shape1 =</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">1</span>)</span>
-<span id="cb7-3"><a href=""></a><span class="fu">plot</span>(x,densidad,<span class="at">type=</span><span class="st">"l"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href=""></a><span class="fu">plot</span>(x,densidad,<span class="at">type=</span><span class="st">"l"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -470,8 +470,8 @@ B(\alpha, \beta)=\int_0^1 y^{\alpha-1}(1-y)^{\beta-1} d y=\frac{\Gamma(\alpha) \
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>acum <span class="ot">=</span> <span class="fu">pbeta</span>(x, <span class="at">shape1 =</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">1</span>)</span>
-<span id="cb8-2"><a href=""></a><span class="fu">plot</span>(x,acum,<span class="at">type=</span><span class="st">"l"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>acum <span class="ot">=</span> <span class="fu">pbeta</span>(x, <span class="at">shape1 =</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">1</span>)</span>
+<span id="cb8-2"><a href=""></a><span class="fu">plot</span>(x,acum,<span class="at">type=</span><span class="st">"l"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -856,13 +856,14 @@ B(\alpha, \beta)=\int_0^1 y^{\alpha-1}(1-y)^{\beta-1} d y=\frac{\Gamma(\alpha) \
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

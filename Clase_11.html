@@ -6,8 +6,8 @@
 <script src="Clase_11_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Clase_11_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Clase_11_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Clase_11_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="Clase_11_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Shu Wei Chou Chen">
   <title>Estimación por intervalo3</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Clase_11_files/libs/revealjs/dist/theme/quarto-648bbac8bff2f14ab517ece465d6d485.css">
+  <link rel="stylesheet" href="Clase_11_files/libs/revealjs/dist/theme/quarto-829c66079de1ba6dba869a367cd4b667.css">
   <link href="Clase_11_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Clase_11_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Clase_11_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -194,7 +194,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Estimación por intervalo<sup>3</sup></h1>
-  <p class="subtitle"><a href="https://shuwei325.github.io/teo-estad">Curso: Teoría Estadística</a></p>
+  <p class="subtitle"><a href="https://swchouchen.github.io/teo-estad">Curso: Teoría Estadística</a></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -333,26 +333,26 @@ code {
 <p><strong>Solución:</strong> Asumiendo que las poblaciones son normales defina <span class="math inline">\(\mathrm{X}_{1}\equiv\)</span> ‘Producción de maíz del híbrido I’ que sigue una <span class="math inline">\(\mathrm{N}\left(\mu_{1},\sigma_{1}^2\right)\)</span> y <span class="math inline">\(\mathrm{X}_{2} \equiv\)</span> ’ Producción de maíz del híbrido II’ que sigue una distribución <span class="math inline">\(\mathrm{N}\left(\mu_{2}, \sigma_{2}^2\right)\)</span></p>
 <p>Entonces</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>x1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">90</span>,<span class="dv">85</span>,<span class="dv">95</span>,<span class="dv">76</span>,<span class="dv">80</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>x1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">90</span>,<span class="dv">85</span>,<span class="dv">95</span>,<span class="dv">76</span>,<span class="dv">80</span>)</span>
 <span id="cb1-2"><a href=""></a>x2 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">84</span>,<span class="dv">87</span>,<span class="dv">90</span>,<span class="dv">92</span>,<span class="dv">90</span>)</span>
-<span id="cb1-3"><a href=""></a><span class="fu">var</span>(x1);<span class="fu">var</span>(x2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href=""></a><span class="fu">var</span>(x1);<span class="fu">var</span>(x2)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 57.7</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.8</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>razon <span class="ot">=</span> <span class="fu">var</span>(x1)<span class="sc">/</span><span class="fu">var</span>(x2)</span>
-<span id="cb4-2"><a href=""></a>(<span class="at">a=</span><span class="fu">qf</span>(<span class="fl">0.05</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>razon <span class="ot">=</span> <span class="fu">var</span>(x1)<span class="sc">/</span><span class="fu">var</span>(x2)</span>
+<span id="cb4-2"><a href=""></a>(<span class="at">a=</span><span class="fu">qf</span>(<span class="fl">0.05</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1565378</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>(<span class="at">b=</span><span class="fu">qf</span>(<span class="fl">0.95</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>(<span class="at">b=</span><span class="fu">qf</span>(<span class="fl">0.95</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.388233</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>IC<span class="ot">=</span><span class="fu">c</span>(razon<span class="sc">/</span>b,razon<span class="sc">/</span>a)</span>
-<span id="cb8-2"><a href=""></a><span class="fu">round</span>(IC,<span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>IC<span class="ot">=</span><span class="fu">c</span>(razon<span class="sc">/</span>b,razon<span class="sc">/</span>a)</span>
+<span id="cb8-2"><a href=""></a><span class="fu">round</span>(IC,<span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0.9217 37.6124</code></pre>
 </div>
@@ -858,13 +858,14 @@ code {
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

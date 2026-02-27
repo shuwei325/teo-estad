@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -62,18 +62,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="lab03_files/libs/clipboard/clipboard.min.js"></script>
 <script src="lab03_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="lab03_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="lab03_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="lab03_files/libs/quarto-html/popper.min.js"></script>
 <script src="lab03_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="lab03_files/libs/quarto-html/anchor.min.js"></script>
 <link href="lab03_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="lab03_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="lab03_files/libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="lab03_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="lab03_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="lab03_files/libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="lab03_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="lab03_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="lab03_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="lab03_files/libs/bootstrap/bootstrap-6e5ff12f349f7d7ee99023e5a7f49be9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="lab03_files/libs/bootstrap/bootstrap-dark-1c59215f878e034bd7426c637fa661ac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="lab03_files/libs/bootstrap/bootstrap-6e5ff12f349f7d7ee99023e5a7f49be9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="lab03_files/libs/bootstrap/bootstrap-0b716d6fe31096b8dc5b1cb48462c79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="lab03_files/libs/bootstrap/bootstrap-dark-7c823468029c3b379f9b90e418026680.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="lab03_files/libs/bootstrap/bootstrap-0b716d6fe31096b8dc5b1cb48462c79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -89,7 +90,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -291,7 +292,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">lab03: Intervalos de confianza</h1>
-<p class="subtitle lead"><a href="https://shuwei325.github.io/teo-estad">Curso: Teoría Estadística</a></p>
+<p class="subtitle lead"><a href="https://swchouchen.github.io/teo-estad">Curso: Teoría Estadística</a></p>
 </div>
 
 
@@ -325,73 +326,73 @@ window.Quarto = {
 <p>Suponga que la población sigue una distribución Poisson con <span class="math inline">\(\lambda=4\)</span>, y tenemos disponible muestras aleatorias de <span class="math inline">\(n=50\)</span> personas. Simulamos <span class="math inline">\(K=1000\)</span> muestras y calculamos intervalos de confianza de <span class="math inline">\(0.95\)</span> para <span class="math inline">\(\lambda\)</span> asumiendo muestras grandes.</p>
 <p>Primero, generamos <span class="math inline">\(K=1000\)</span> muestras independientes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>K){</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  X[[i]] <span class="ot">&lt;-</span> <span class="fu">rpois</span>(n,<span class="at">lambda=</span><span class="dv">4</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="ic-asintótico-con-el-teorema-de-slutsky" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="ic-asintótico-con-el-teorema-de-slutsky"><span class="header-section-number">1</span> IC asintótico con el teorema de Slutsky</h2>
 <p>Luego calculamos intervalo de confianza usando aproximación normal.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>IC_pois <span class="ot">&lt;-</span> <span class="cf">function</span>(X,<span class="at">alfa=</span><span class="fl">0.05</span>){</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>IC_pois <span class="ot">&lt;-</span> <span class="cf">function</span>(X,<span class="at">alfa=</span><span class="fl">0.05</span>){</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  xbarra <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(xbarra<span class="sc">-</span><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alfa<span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">sqrt</span>(xbarra<span class="sc">/</span>n),</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    xbarra<span class="sc">+</span><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alfa<span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">sqrt</span>(xbarra<span class="sc">/</span>n))</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>IC_resultados<span class="ot">=</span><span class="fu">sapply</span>(X,IC_pois)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>IC_resultados<span class="ot">=</span><span class="fu">sapply</span>(X,IC_pois)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A continuación vemos que se produce <span class="math inline">\(K=1000\)</span> columnas de límite inferior y superior de cada intervalo de confianza. Se muestra los primeros <span class="math inline">\(5\)</span> intervalos como ilustración.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(IC_resultados)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(IC_resultados)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]    2 1000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(IC_resultados) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lim.inf"</span>,<span class="st">"lim.sup"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>IC_resultados[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(IC_resultados) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lim.inf"</span>,<span class="st">"lim.sup"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>IC_resultados[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            [,1]     [,2]     [,3]     [,4]     [,5]
-lim.inf 3.296839 3.520122 3.557384 3.613303 3.427026
-lim.sup 4.383161 4.639878 4.682616 4.746697 4.532974</code></pre>
+lim.inf 3.427026 3.520122 3.706564 3.111173 3.427026
+lim.sup 4.532974 4.639878 4.853436 4.168827 4.532974</code></pre>
 </div>
 </div>
-<p>Verificamos que 953 de <span class="math inline">\(1000\)</span> contiene al parámetro verdadero <span class="math inline">\(\lambda=4\)</span>.</p>
+<p>Verificamos que 951 de <span class="math inline">\(1000\)</span> contiene al parámetro verdadero <span class="math inline">\(\lambda=4\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(IC_resultados[<span class="dv">1</span>,]<span class="sc">&lt;</span><span class="dv">4</span> <span class="sc">&amp;</span> IC_resultados[<span class="dv">2</span>,]<span class="sc">&gt;</span><span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(IC_resultados[<span class="dv">1</span>,]<span class="sc">&lt;</span><span class="dv">4</span> <span class="sc">&amp;</span> IC_resultados[<span class="dv">2</span>,]<span class="sc">&gt;</span><span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 953</code></pre>
+<pre><code>[1] 951</code></pre>
 </div>
 </div>
-<p>Es decir 95.3 <span class="math inline">\(\%\)</span> contiene al parámetro <span class="math inline">\(\lambda\)</span>.</p>
+<p>Es decir 95.1 <span class="math inline">\(\%\)</span> contiene al parámetro <span class="math inline">\(\lambda\)</span>.</p>
 </section>
 <section id="ic-asintótico-con-la-función-estabilizadora-de-variancia" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="ic-asintótico-con-la-función-estabilizadora-de-variancia"><span class="header-section-number">2</span> IC asintótico con la función estabilizadora de variancia</h2>
 <p>Por otro lado, se puede usar la función estabilizadora de variancia para encontrar el intervalo de confianza. A continuación utilizamos este método para ver cuántos de ellos contiene al parámetro <span class="math inline">\(\lambda=4\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>IC_pois2 <span class="ot">&lt;-</span> <span class="cf">function</span>(X,<span class="at">alfa=</span><span class="fl">0.05</span>){</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>IC_pois2 <span class="ot">&lt;-</span> <span class="cf">function</span>(X,<span class="at">alfa=</span><span class="fl">0.05</span>){</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  xbarra <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>((xbarra<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">-</span><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alfa<span class="sc">/</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(n)))<span class="sc">^</span><span class="dv">2</span>,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    (xbarra<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alfa<span class="sc">/</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(n)))<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>IC_resultados2<span class="ot">=</span><span class="fu">sapply</span>(X,IC_pois2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>IC_resultados2<span class="ot">=</span><span class="fu">sapply</span>(X,IC_pois2)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Verificamos que 955 de <span class="math inline">\(1000\)</span> contiene al parámetro verdadero <span class="math inline">\(\lambda=4\)</span>.</p>
+<p>Verificamos que 954 de <span class="math inline">\(1000\)</span> contiene al parámetro verdadero <span class="math inline">\(\lambda=4\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(IC_resultados2[<span class="dv">1</span>,]<span class="sc">&lt;</span><span class="dv">4</span> <span class="sc">&amp;</span> IC_resultados2[<span class="dv">2</span>,]<span class="sc">&gt;</span><span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(IC_resultados2[<span class="dv">1</span>,]<span class="sc">&lt;</span><span class="dv">4</span> <span class="sc">&amp;</span> IC_resultados2[<span class="dv">2</span>,]<span class="sc">&gt;</span><span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 955</code></pre>
+<pre><code>[1] 954</code></pre>
 </div>
 </div>
-<p>Es decir, utilizando el intervalo de confianza estabilizando la variancia asintótica, 95.5 <span class="math inline">\(\%\)</span> contiene al parámetro <span class="math inline">\(\lambda\)</span>. Ambos resultados son muy próximos debido a que con <span class="math inline">\(n=50\)</span> es suficientemente grande.</p>
+<p>Es decir, utilizando el intervalo de confianza estabilizando la variancia asintótica, 95.4 <span class="math inline">\(\%\)</span> contiene al parámetro <span class="math inline">\(\lambda\)</span>. Ambos resultados son muy próximos debido a que con <span class="math inline">\(n=50\)</span> es suficientemente grande.</p>
 </section>
 <section id="muestra-de-tamaño-7" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="muestra-de-tamaño-7"><span class="header-section-number">3</span> Muestra de tamaño 7</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">7</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>K){</span>
@@ -400,13 +401,13 @@ lim.sup 4.383161 4.639878 4.682616 4.746697 4.532974</code></pre>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>IC_resultados1<span class="ot">=</span><span class="fu">sapply</span>(X,IC_pois)</span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>IC_resultados2<span class="ot">=</span><span class="fu">sapply</span>(X,IC_pois2)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(IC_resultados1[<span class="dv">1</span>,]<span class="sc">&lt;</span><span class="dv">4</span> <span class="sc">&amp;</span> IC_resultados1[<span class="dv">2</span>,]<span class="sc">&gt;</span><span class="dv">4</span>)<span class="sc">/</span>K</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(IC_resultados1[<span class="dv">1</span>,]<span class="sc">&lt;</span><span class="dv">4</span> <span class="sc">&amp;</span> IC_resultados1[<span class="dv">2</span>,]<span class="sc">&gt;</span><span class="dv">4</span>)<span class="sc">/</span>K</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9433</code></pre>
+<pre><code>[1] 0.9389</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(IC_resultados2[<span class="dv">1</span>,]<span class="sc">&lt;</span><span class="dv">4</span> <span class="sc">&amp;</span> IC_resultados2[<span class="dv">2</span>,]<span class="sc">&gt;</span><span class="dv">4</span>)<span class="sc">/</span>K</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(IC_resultados2[<span class="dv">1</span>,]<span class="sc">&lt;</span><span class="dv">4</span> <span class="sc">&amp;</span> IC_resultados2[<span class="dv">2</span>,]<span class="sc">&gt;</span><span class="dv">4</span>)<span class="sc">/</span>K</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9554</code></pre>
+<pre><code>[1] 0.9495</code></pre>
 </div>
 </div>
 </section>
@@ -477,13 +478,14 @@ lim.sup 4.383161 4.639878 4.682616 4.746697 4.532974</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
