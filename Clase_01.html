@@ -347,7 +347,7 @@
 </section>
 <section id="variable-aleatoria" class="slide level2">
 <h2>Variable Aleatoria</h2>
-<p>Una <em>variable aleatoria (v.a.)</em> <span class="math inline">\({\displaystyle X}\)</span> es una función real definida en el espacio de probabilidad <span class="math inline">\({\displaystyle (\Omega ,{\mathcal {A}},P)}\)</span>, asociado a un experimento aleatorio. <span class="math display">\[X:\Omega \to \mathbb{R}.\]</span></p>
+<p>Una <em>variable aleatoria (v.a.)</em> <span class="math inline">\({\displaystyle Y}\)</span> es una función real definida en el espacio de probabilidad <span class="math inline">\({\displaystyle (\Omega ,{\mathcal {A}},P)}\)</span>, asociado a un experimento aleatorio. <span class="math display">\[Y:\Omega \to \mathbb{R}.\]</span></p>
 <p><strong>V.A. discreta</strong></p>
 <ul>
 <li>Una variable aleatoria <span class="math inline">\(Y\)</span> se dice que es discreta si puede tomar un número finito o contablemente infinito de valores distintos.</li>
@@ -388,30 +388,30 @@
 <h2>Variable Aleatoria</h2>
 <p><strong>Ejemplo con la distribución binomial</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb1-2"><a href=""></a>prob <span class="ot">=</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span><span class="dv">3</span>, <span class="at">prob=</span><span class="fl">0.4</span>)</span>
-<span id="cb1-3"><a href=""></a>acum <span class="ot">=</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span><span class="dv">3</span>, <span class="at">prob=</span><span class="fl">0.4</span>)</span>
-<span id="cb1-4"><a href=""></a><span class="fu">cbind</span>(x,prob,acum)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb1-2"><a href=""></a>prob <span class="ot">=</span> <span class="fu">dbinom</span>(y, <span class="at">size =</span><span class="dv">3</span>, <span class="at">prob=</span><span class="fl">0.4</span>)</span>
+<span id="cb1-3"><a href=""></a>acum <span class="ot">=</span> <span class="fu">pbinom</span>(y, <span class="at">size =</span><span class="dv">3</span>, <span class="at">prob=</span><span class="fl">0.4</span>)</span>
+<span id="cb1-4"><a href=""></a><span class="fu">cbind</span>(y,prob,acum)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     x  prob  acum
+<pre><code>     y  prob  acum
 [1,] 0 0.216 0.216
 [2,] 1 0.432 0.648
 [3,] 2 0.288 0.936
 [4,] 3 0.064 1.000</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>esperanza <span class="ot">=</span> <span class="fu">sum</span>(x<span class="sc">*</span>prob)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>esperanza <span class="ot">=</span> <span class="fu">sum</span>(y<span class="sc">*</span>prob)</span>
 <span id="cb3-2"><a href=""></a>esperanza</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.2</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>variancia <span class="ot">=</span> <span class="fu">sum</span>((x<span class="sc">-</span>esperanza)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>prob)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>variancia <span class="ot">=</span> <span class="fu">sum</span>((y<span class="sc">-</span>esperanza)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>prob)</span>
 <span id="cb5-2"><a href=""></a>variancia</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.72</code></pre>
 </div>
 </div>
 <p>Recuerde que demostraron las fórmulas:</p>
-<p><span class="math display">\[E(X)=np = 3\cdot 0.4 = 1.2\]</span> <span class="math display">\[Var(X)=npq = 3\cdot 0.4 \cdot 0.6 = 0.72\]</span></p>
+<p><span class="math display">\[E(Y)=np = 3\cdot 0.4 = 1.2\]</span> <span class="math display">\[Var(Y)=npq = 3\cdot 0.4 \cdot 0.6 = 0.72\]</span></p>
 </section>
 <section id="variable-aleatoria-4" class="slide level2">
 <h2>Variable Aleatoria</h2>
@@ -457,9 +457,9 @@ B(\alpha, \beta)=\int_0^1 y^{\alpha-1}(1-y)^{\beta-1} d y=\frac{\Gamma(\alpha) \
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">0.01</span>)</span>
-<span id="cb7-2"><a href=""></a>densidad <span class="ot">=</span> <span class="fu">dbeta</span>(x, <span class="at">shape1 =</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">1</span>)</span>
-<span id="cb7-3"><a href=""></a><span class="fu">plot</span>(x,densidad,<span class="at">type=</span><span class="st">"l"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>y <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">0.01</span>)</span>
+<span id="cb7-2"><a href=""></a>densidad <span class="ot">=</span> <span class="fu">dbeta</span>(y, <span class="at">shape1 =</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">1</span>)</span>
+<span id="cb7-3"><a href=""></a><span class="fu">plot</span>(y,densidad,<span class="at">type=</span><span class="st">"l"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -470,8 +470,8 @@ B(\alpha, \beta)=\int_0^1 y^{\alpha-1}(1-y)^{\beta-1} d y=\frac{\Gamma(\alpha) \
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>acum <span class="ot">=</span> <span class="fu">pbeta</span>(x, <span class="at">shape1 =</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">1</span>)</span>
-<span id="cb8-2"><a href=""></a><span class="fu">plot</span>(x,acum,<span class="at">type=</span><span class="st">"l"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>acum <span class="ot">=</span> <span class="fu">pbeta</span>(y, <span class="at">shape1 =</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">1</span>)</span>
+<span id="cb8-2"><a href=""></a><span class="fu">plot</span>(y,acum,<span class="at">type=</span><span class="st">"l"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
