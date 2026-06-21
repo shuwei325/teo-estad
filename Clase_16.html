@@ -6,8 +6,8 @@
 <script src="Clase_16_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Clase_16_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Clase_16_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Clase_16_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="Clase_16_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Shu Wei Chou Chen">
   <title>Alternativas no paramétricas1</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="Clase_16_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="Clase_16_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="Clase_16_files/libs/revealjs/dist/theme/quarto-829c66079de1ba6dba869a367cd4b667.css">
+  <link rel="stylesheet" href="Clase_16_files/libs/revealjs/dist/theme/quarto-9eb768afb8c6a1b6b3ca03240ed62dd7.css">
   <link href="Clase_16_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Clase_16_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Clase_16_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -650,7 +653,7 @@ code {
 <section class="slide level2">
 
 <ul>
-<li>La variancia del estimador <span class="math inline">\(\hat{f}_h(x)\)</span>: <span class="math display">\[Var\left(\hat{f}_h(x)\right)=Var \left\lbrace \frac{1}{nh}\sum_{i=1}^n  I(X_i \in B_j) \right\rbrace =\frac{1}{n^2h^2} Var \left\lbrace \sum_{i=1}^n  I(X_i \in B_j) \right\rbrace\]</span> <span class="math display">\[=\frac{1}{n^2h^2} \left[\int_{(j-1)h}^{jh} f(u) du\right] \left[1-\int_{(j-1)h}^{jh} f(u) du\right] \]</span> Se puede mostrar que: <span class="math display">\[Var\left(\hat{f}_h(x)\right) \approx  \frac{1}{nh}f(x)\]</span></li>
+<li>La variancia del estimador <span class="math inline">\(\hat{f}_h(x)\)</span>: <span class="math display">\[Var\left(\hat{f}_h(x)\right)=Var \left\lbrace \frac{1}{nh}\sum_{i=1}^n  I(X_i \in B_j) \right\rbrace =\frac{1}{n^2h^2} Var \left\lbrace \sum_{i=1}^n  I(X_i \in B_j) \right\rbrace\]</span> <span class="math display">\[=\frac{n}{n^2h^2} \left[\int_{(j-1)h}^{jh} f(u) du\right] \left[1-\int_{(j-1)h}^{jh} f(u) du\right] \]</span> Se puede mostrar que: <span class="math display">\[Var\left(\hat{f}_h(x)\right) \approx  \frac{1}{nh}f(x)\]</span></li>
 <li>Note que la variancia del estimador decrece cuando <span class="math inline">\(nh\)</span> crece, mientras que el sesgo del estimador decrece a cero si <span class="math inline">\(h\)</span> decrece.</li>
 </ul>
 </section>
