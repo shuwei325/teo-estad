@@ -1,6 +1,9 @@
 Este repositorio contiene materiales del curso Teoría Estadística
-(XS-3310) de la Escuela de Estadística, Universidad de Costa Rica,
-preparados por Shu Wei Chou Chen.
+(XS-3310) del tercer año del Bachillerato en Estadística, de la Escuela
+de Estadística, Universidad de Costa Rica.
+
+**Responsable del repositorio:** Shu Wei Chou Chen
+(<shuwei.chou@ucr.ac.cr>)
 
 ## Descripción del curso:
 
@@ -10,11 +13,6 @@ los fundamentos matemáticos de la inferencia estadística clásica:
 estimación de parámetros y contraste de hipótesis, y desarrollar las
 herramientas de estadística contemporánea para sus aplicaciones en
 diversas áreas.
-
-**Profesores del curso (ciclo I-2026):**
-
-- **Grupo 1:** Shu Wei Chou Chen (<shuwei.chou@ucr.ac.cr>)
-- **Grupo 2:** Christopher Torres Rojas (<christopher.torres@ucr.ac.cr>)
 
 ## Presentaciones
 
