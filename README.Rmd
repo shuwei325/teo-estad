@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Este repositorio contiene materiales del curso Teoría Estadística (XS-3310) del tercer año del Bachillerato en Estadística, de la Escuela de Estadística, Universidad de Costa Rica.
 
-**Responsable del repositorio:** Shu Wei Chou Chen (shuwei.chou@ucr.ac.cr)
+**Responsable del repositorio:** Shu Wei Chou Chen (shuwei.chou@ucr.ac.cr).
 
 ## Descripción del curso:
 
@@ -19,8 +19,8 @@ Este curso utiliza la teoría de la probabilidad en espacios discretos y continu
 
 ## Presentaciones
 
-| Tema                        |  Clases                               | Laboratorio 
-|-----------------------------|---------------------------------------|-------------------------------
+| Tema                        |  Clases                          | Laboratorio 
+|-----------------------------|----------------------------------|-------------------------------
 | 1. Introducción             |       [Clase01](Clase_01.html)   |       
 |                             |       [Clase02](Clase_02.html)   |   
 |                             |       [Clase03](Clase_03.html)   | [Lab Tema 1](./lab01.html)      

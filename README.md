@@ -3,7 +3,7 @@ Este repositorio contiene materiales del curso Teoría Estadística
 de Estadística, Universidad de Costa Rica.
 
 **Responsable del repositorio:** Shu Wei Chou Chen
-(<shuwei.chou@ucr.ac.cr>)
+(<shuwei.chou@ucr.ac.cr>).
 
 ## Descripción del curso:
 
